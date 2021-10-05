@@ -1,0 +1,9 @@
+C:\Apps\Veterinaria\MascotaFeliz.App\MascotaFeliz.App.Persistencia\bin\Debug\netstandard2.0\MascotaFeliz.App.Persistencia.deps.json
+C:\Apps\Veterinaria\MascotaFeliz.App\MascotaFeliz.App.Persistencia\bin\Debug\netstandard2.0\MascotaFeliz.App.Persistencia.dll
+C:\Apps\Veterinaria\MascotaFeliz.App\MascotaFeliz.App.Persistencia\bin\Debug\netstandard2.0\MascotaFeliz.App.Persistencia.pdb
+C:\Apps\Veterinaria\MascotaFeliz.App\MascotaFeliz.App.Persistencia\obj\Debug\netstandard2.0\MascotaFeliz.App.Persistencia.csprojAssemblyReference.cache
+C:\Apps\Veterinaria\MascotaFeliz.App\MascotaFeliz.App.Persistencia\obj\Debug\netstandard2.0\MascotaFeliz.App.Persistencia.AssemblyInfoInputs.cache
+C:\Apps\Veterinaria\MascotaFeliz.App\MascotaFeliz.App.Persistencia\obj\Debug\netstandard2.0\MascotaFeliz.App.Persistencia.AssemblyInfo.cs
+C:\Apps\Veterinaria\MascotaFeliz.App\MascotaFeliz.App.Persistencia\obj\Debug\netstandard2.0\MascotaFeliz.App.Persistencia.csproj.CoreCompileInputs.cache
+C:\Apps\Veterinaria\MascotaFeliz.App\MascotaFeliz.App.Persistencia\obj\Debug\netstandard2.0\MascotaFeliz.App.Persistencia.dll
+C:\Apps\Veterinaria\MascotaFeliz.App\MascotaFeliz.App.Persistencia\obj\Debug\netstandard2.0\MascotaFeliz.App.Persistencia.pdb
