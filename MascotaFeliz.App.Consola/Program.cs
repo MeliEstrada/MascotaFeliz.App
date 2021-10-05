@@ -1,4 +1,5 @@
 ﻿using System;
+using MascotaFeliz.App.Dominio;
 
 namespace MascotaFeliz.App.Consola
 {
@@ -6,7 +7,7 @@ namespace MascotaFeliz.App.Consola
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World Entity Framework!");
         }
     }
 }
