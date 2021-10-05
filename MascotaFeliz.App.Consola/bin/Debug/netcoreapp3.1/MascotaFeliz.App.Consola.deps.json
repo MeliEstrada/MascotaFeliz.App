@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "MascotaFeliz.App.Consola/1.0.0": {
+        "runtime": {
+          "MascotaFeliz.App.Consola.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MascotaFeliz.App.Consola/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
