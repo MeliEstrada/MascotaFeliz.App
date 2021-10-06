@@ -5,6 +5,6 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
 {
     public interface IMemoriaPropietario
     {
-         IEnumerable<Propietario> GetAll();
+        IEnumerable<Propietario> GetAll();
     }
 }
