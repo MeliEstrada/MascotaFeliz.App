@@ -1,0 +1,22 @@
+﻿@page
+@model HolaWeb.App.Frontend.Pages.DetailsModel
+@{
+}
+<h2>@Model.Propietario.Nombre @Model.Propietario.Apellidos</h2>
+<div>
+    Nombre: @Model.Propietario.Nombre
+</div>
+<div>
+    Apellido(s): @Model.Propietario.Apellidos
+</div>
+<div>
+    Número de Teléfono: @Model.Propietario.NumeroTelefono
+</div>
+<div>
+    Correo Electrónico: @Model.Propietario.CorreoElectronico
+</div>
+<form method="post">
+    <input type="hidden" asp-for="Propietario.Id"/>
+    <button type="submit" class="btn btn-primary">Eliminar</button>
+</form>
+<a asp-page="./ListPropietariosProvisional" class="btn-default">Lista de Propietarios</a>
