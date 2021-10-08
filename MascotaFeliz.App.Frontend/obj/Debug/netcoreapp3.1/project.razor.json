@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\Andre\\Documents\\GitHub\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\MascotaFeliz.App.Frontend.csproj",
+  "FilePath": "c:\\Apps\\Veterinaria\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\MascotaFeliz.App.Frontend.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14402,38 +14402,63 @@
   "RootNamespace": "MascotaFeliz.App.Frontend",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\Andre\\Documents\\GitHub\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FilePath": "c:\\Apps\\Veterinaria\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Mascota\\ListMascotasProvisional.cshtml",
+      "TargetPath": "Pages\\Mascota\\ListMascotasProvisional.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Andre\\Documents\\GitHub\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\_ViewImports.cshtml",
-      "TargetPath": "Pages\\_ViewImports.cshtml",
+      "FilePath": "c:\\Apps\\Veterinaria\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Error.cshtml",
+      "TargetPath": "Pages\\Error.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Andre\\Documents\\GitHub\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Index.cshtml",
-      "TargetPath": "Pages\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\Andre\\Documents\\GitHub\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Privacy.cshtml",
-      "TargetPath": "Pages\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\Andre\\Documents\\GitHub\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Shared\\_Layout.cshtml",
+      "FilePath": "c:\\Apps\\Veterinaria\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Shared\\_Layout.cshtml",
       "TargetPath": "Pages\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Andre\\Documents\\GitHub\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\_ViewStart.cshtml",
+      "FilePath": "c:\\Apps\\Veterinaria\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\_ViewImports.cshtml",
+      "TargetPath": "Pages\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Apps\\Veterinaria\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Veterinario\\ListVeterinariosProvisional.cshtml",
+      "TargetPath": "Pages\\Veterinario\\ListVeterinariosProvisional.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Apps\\Veterinaria\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Propietario\\ListPropietariosProvisional.cshtml",
+      "TargetPath": "Pages\\Propietario\\ListPropietariosProvisional.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Apps\\Veterinaria\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Visita\\ListVisitasProvisional.cshtml",
+      "TargetPath": "Pages\\Visita\\ListVisitasProvisional.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Apps\\Veterinaria\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Index.cshtml",
+      "TargetPath": "Pages\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Apps\\Veterinaria\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Administrador\\ListAdministradoresProvisional.cshtml",
+      "TargetPath": "Pages\\Administrador\\ListAdministradoresProvisional.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Apps\\Veterinaria\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\_ViewStart.cshtml",
       "TargetPath": "Pages\\_ViewStart.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Andre\\Documents\\GitHub\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Error.cshtml",
-      "TargetPath": "Pages\\Error.cshtml",
+      "FilePath": "c:\\Apps\\Veterinaria\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Apps\\Veterinaria\\MascotaFeliz.App\\MascotaFeliz.App.Frontend\\Pages\\Privacy.cshtml",
+      "TargetPath": "Pages\\Privacy.cshtml",
       "FileKind": "mvc"
     }
   ],
