@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MascotaFeliz.App.Persistencia.AppMemoriaTemporal;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +25,11 @@ namespace MascotaFeliz.App.Frontend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            // services.AddSingleton<IMemoriaAdministrador, MemoriaAdministrador>();
+            // services.AddSingleton<IMemoriaVeterinario, MemoriaVeterinario>();
+            services.AddSingleton<IMemoriaPropietario, MemoriaPropietario>();
+            // services.AddSingleton<IMemoriaMascota, MemoriaMascota>();
+            // services.AddSingleton<IMemoriaVisita, MemoriaVisita>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

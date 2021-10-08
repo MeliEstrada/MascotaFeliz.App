@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "rAB3g2SufzcqeHalTArCMAkpMKF8DK+4jioZg1cSFa6J8tI7adjwBeXhzGcFKPDpO1H6KAHUxsK5yw0pqbNe/w==",
+  "dgSpecHash": "ZNcq1yDzFr0d7au7U039JMZ0bVWxiOnz8WCmqbJjCx7GrrbIeQAEP0mqesHrRMMO4Rcb5USql4FDPozZ9opScQ==",
   "success": true,
   "projectFilePath": "C:\\Apps\\Veterinaria\\MascotaFeliz.App\\MascotaFeliz.App.Dominio\\MascotaFeliz.App.Dominio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Johanna\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\Johanna\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\Johanna\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Johanna\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }
