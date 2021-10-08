@@ -1,0 +1,30 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.EditPropietarioProvisionalModel
+@{
+}
+<h2>Datos del Propietario: @Model.Propietario.Nombre @Model.Propietario.Apellidos</h2>
+<form method="POST">
+    <input type="hidden" asp-for="Propietario.Id"/>
+    <div class="form-group">
+        <label asp-for="Propietario.Nombre"></label>
+        <input asp-for="Propietario.Nombre" class="form-control">
+        <span class="text-danger" asp-validation-for="Propietario.Nombre"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Propietario.Apellidos"></label>
+        <input asp-for="Propietario.Apellidos" class="form-control">
+        <span class="text-danger" asp-validation-for="Propietario.Apellidos"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Propietario.NumeroTelefono"></label>
+        <input asp-for="Propietario.NumeroTelefono" class="form-control">
+        <span class="text-danger" asp-validation-for="Propietario.NumeroTelefono"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Propietario.CorreoElectronico"></label>
+        <input asp-for="Propietario.CorreoElectronico" class="form-control">
+        <span class="text-danger" asp-validation-for="Propietario.CorreoElectronico"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Grabar</button>
+</form>
+<a asp-page="./ListPropietariosProvisional" class="btn-default">Lista de Propietarios</a>
