@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MyApp.Namespace
 {
-    public class DetailsAdministradorProModel : PageModel
+    public class DetailsAdministradorProsionalModel : PageModel
     {
         private readonly IMemoriaAdministrador memoriaAdministrador;
         //[BindProperty]
