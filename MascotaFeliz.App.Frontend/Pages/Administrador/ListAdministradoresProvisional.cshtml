@@ -2,3 +2,49 @@
 @model MascotaFeliz.App.Frontend.Pages.ListAdministradoresProvisionalModel
 @{
 }
+<h1>Listado de Administradores de Mascota Feliz</h1>
+<form method="get">
+    <div class="form-group">
+        <p>
+            Filtro:
+            <input type="text" name="filtroBusqueda" asp-for="FiltroBusqueda"/>
+            <input type="submit" value="Filtrar"/>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <td><b>Nombre Completo</b></td>
+        <td><b>Número de Teléfono</b></td>
+        <td><b>Correo Electrónico</b></td>
+        <td><b>Detalles</b></td>
+        <td><b>Actualizar</b></td>
+    <tr>
+    @foreach (var administrador in Model.Administradores)
+    {
+        <tr>
+            <td>@administrador.Nombre @administrador.Apellidos</td>
+            <td>@administrador.NumeroTelefono</td>
+            <td>@administrador.CorreoElectronico</td>
+            <td>
+                <a 
+                    class="btn btn-primary table-btn" 
+                    asp-page="./DetailsAdministradorProvisional"
+                    asp-route-administradorId="@administrador.Id">
+                    <i class="fas fa-info-circle fa-lg"></i>
+                    @* Detalles Administrador *@
+                </a>
+            </td>
+            <td>
+                <a 
+                    class="btn btn-primary table-btn" 
+                    asp-page="./EditAdministradorProvisional"
+                    asp-route-administradorId="@administrador.Id">
+                    <i class="fas fa-address-book fa-lg" aria-hidden="true"></i>
+                    @* Actualizar Administrador *@
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+<a asp-page="./EditAdministradorProvisional" class="btn btn-primary">Adicionar Administrador</a>
