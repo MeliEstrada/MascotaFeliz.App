@@ -13,7 +13,7 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
         {
             administradores = new List<Administrador>
             {
-                new Propietario{Id=1, Nombre="Carlos Julio",
+                new Administrador{Id=1, Nombre="Carlos Julio",
                     Apellidos="Fadul Vasquez", NumeroTelefono="3022333949",
                     CorreoElectronico="carlosfadultic@gmail.com"},
             };
