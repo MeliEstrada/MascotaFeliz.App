@@ -7,9 +7,9 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
     {
         IEnumerable<Administrador> GetAllAdministradores();
         IEnumerable<Administrador> GetAdministradoresPorFiltro(string filtro);
-        Propietario GetAdministrador(int administradorId);
-        Propietario UpdateAdministrador(Propietario administradorActualizado);
-        Propietario AddAdministrador(Propietario nuevoAdministrador);
+        Administrador GetAdministrador(int administradorId);
+        Administrador UpdateAdministrador(Administrador administradorActualizado);
+        Administrador AddAdministrador(Administrador nuevoAdministrador);
         void DeleteAdministrador(int administradorId);
     }
 }
