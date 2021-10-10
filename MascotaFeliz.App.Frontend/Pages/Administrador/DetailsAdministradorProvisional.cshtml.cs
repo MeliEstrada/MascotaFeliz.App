@@ -7,12 +7,12 @@ using MascotaFeliz.App.Persistencia.AppMemoriaTemporal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MyApp.Namespace
+namespace MascotaFeliz.App.Frontend.Pages
 {
-    public class DetailsAdministradorProsionalModel : PageModel
+    public class DetailsAdministradorProvisionalModel : PageModel
     {
         private readonly IMemoriaAdministrador memoriaAdministrador;
-        //[BindProperty]
+        [BindProperty]
         public Administrador Administrador {get; set;}
 
         public DetailsAdministradorProvisionalModel(IMemoriaAdministrador memoriaAdministrador)
