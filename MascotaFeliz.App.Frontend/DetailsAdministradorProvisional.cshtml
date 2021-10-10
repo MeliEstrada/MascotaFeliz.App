@@ -1,0 +1,22 @@
+﻿@page
+@model MyApp.Namespace.DetailsAdministradorProModel
+@{
+}
+<h2>@Model.Administrador.Nombre @Model.Administrador.Apellidos</h2>
+<div>
+    Nombre : @Model.Administrador.Nombre
+</div>
+<div>
+    Apellido(s): @Model.Administrador.Apellidos
+</div>
+<div>
+    Número de Teléfono: @Model.Administrador.NumeroTelefono
+</div>
+<div>
+    Correo Electrónico: @Model.Administrador.CorreoElectronico
+</div>
+@*<form method="post">
+    <input type="hidden" asp-for = "Administrador.Id"/>
+    <button type="submit" class = "btn btn-primary">Eliminar</button>
+</form>*@
+<a asp-page = "./ListAdministradoresProvisional" class = "btn-default">Lista de Administradores</a>
