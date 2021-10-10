@@ -60,7 +60,7 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
             return administradores;
         }
 
-        public Administrador UpdateAdministrador(MemoriaAdministrador administradorActualizado)
+        public Administrador UpdateAdministrador(Administrador administradorActualizado)
         {
             var administrador = GetAdministrador(administradorActualizado.Id);
             if (administrador != null)
