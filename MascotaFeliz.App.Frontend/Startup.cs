@@ -25,7 +25,7 @@ namespace MascotaFeliz.App.Frontend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            // services.AddSingleton<IMemoriaAdministrador, MemoriaAdministrador>();
+            services.AddSingleton<IMemoriaAdministrador, MemoriaAdministrador>();
             // services.AddSingleton<IMemoriaVeterinario, MemoriaVeterinario>();
             services.AddSingleton<IMemoriaPropietario, MemoriaPropietario>();
             // services.AddSingleton<IMemoriaMascota, MemoriaMascota>();
