@@ -1,4 +1,59 @@
-﻿@page
-@model MascotaFeliz.App.Frontend.Pages.ListConsultaProvisionalModel
-@{
-}
+﻿@page       												
+@model MascotaFeliz.App.Frontend.Pages.ListConsultasProvisionalModel        												
+@{      												
+}       												
+<h1>Lista de Consultas Domiciliarias</h1>   												
+<form method="get">												
+    <div class="form-group">												
+        <p>												
+            Filtro:												
+            <input type="text" name="filtroBusqueda" asp-for="FiltroBusqueda"/>												
+            <input type="submit" value="Filtrar"/>												
+        </p>												
+    </div>												
+</form> 												
+<table class="table">       												
+    <tr>        												
+        <td><b>Nombre</b></td>      												
+        <td><b>Tipo Mascota</b></td>        												
+        <td><b>Veterinario</b></td>     												
+        <td><b>Fecha</b></td>       												
+        <td><b>Hora</b></td>        												
+        <td><b>Temperatura</b></td>     												
+        <td><b>Peso</b></td>   
+        <td><b>Detalles</b></td>
+        <td><b>Actualizar</b></td>
+    </tr>       												
+        @foreach (var consulta in Model.Consultas)
+    {
+        <tr>
+            <td>@consulta.Mascota.Nombre</td>												
+            <td>@consulta.Mascota.TipoMascota</td>												
+            <td>@consulta.Veterinario.Nombre @consulta.Veterinario.Apellidos</td>   												
+            <td>@consulta.Fecha</td>												
+            <td>@consulta.Hora</td>     												
+            <td>@consulta.Temperatura</td>      												
+            <td>@consulta.Peso</td>
+            <td>
+                <a 
+                    class="btn btn-primary table-btn" 
+                    asp-page="./DetailsConsultaProvisional" 
+                    asp-route-consulta.Id="@consulta.Id">  
+                    <i class="fas fa-info-circle fa-lg"></i>
+                    @*Detalle Consulta*@ 
+                </a>
+            </td>
+            <td>
+                <a 
+                    class="btn btn-primary table-btn"												
+                    asp-page="./EditConsultaProvisional"												
+                    asp-route-consultaId="@consulta.Id">
+                    <i class="fas fa-address-book fa-lg" aria-hidden="true"></i>
+                    @*Actualizar Consulta*@
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+<a asp-page="./EditConsultasProvisional" class="btn btn-primary">Adicionar Consulta</a>
+      												

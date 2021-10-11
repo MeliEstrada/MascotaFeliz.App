@@ -2,3 +2,18 @@
 @model MascotaFeliz.App.Frontend.Pages.DetailsConsultaProvisionalModel
 @{
 }
+<h2>@Model.ConsultaDomiciliaria.Fecha @Model.ConsultaDomiciliaria.Hora</h2>
+<div>
+    Fecha: @Model.ConsultaDomiciliaria.Fecha
+</div>
+<div>Hora
+    Hora: @Model.ConsultaDomiciliaria.Fecha
+</div>
+<div>
+    Mascota: @Model.ConsultaDomiciliaria.Mascota
+</div>
+<form method="post">
+    <input type="hidden" asp-for="ConsultaDomiciliaria.Id"/>
+    <button type="submit" class="btn btn-primary">Eliminar</button>
+</form>
+<a asp-page="./ListConsultasProvisional" class="btn.default">Lista de Consultas</a>></a>
