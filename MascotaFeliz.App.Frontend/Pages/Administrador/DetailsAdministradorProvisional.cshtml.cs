@@ -27,11 +27,11 @@ namespace MascotaFeliz.App.Frontend.Pages
             else return Page();            
         }
 
-        /*public IActionResult OnPost()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid) return Page();
             memoriaAdministrador.DeleteAdministrador(Administrador.Id);
             return Page();
-        }*/
+        }
     }
 }

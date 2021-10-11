@@ -1,0 +1,25 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.DetailsVeterinarioProvisionalModel
+@{
+}
+<h2>@Model.Veterinario.Nombre @Model.Veterinario.Apellidos</h2>
+<div>
+    Nombre: @Model.Veterinario.Nombre
+</div>
+<div>
+    Apellido(s): @Model.Veterinario.Apellidos
+</div>
+<div>
+    Número de Teléfono: @Model.Veterinario.NumeroTelefono
+</div>
+<div>
+    Correo Electrónico: @Model.Veterinario.CorreoElectronico
+</div>
+<div>
+    Tarjeta Profesional: @Model.Veterinario.TarjetaProfesional
+</div>
+<form method="post">
+    <input type="hidden" asp-for="Veterinario.Id"/>
+    <button type="submit" class="btn btn-primary">Eliminar</button>
+</form>
+<a asp-page="./ListVeterinariosProvisional" class="btn-default">Lista de Veterinarios</a>
