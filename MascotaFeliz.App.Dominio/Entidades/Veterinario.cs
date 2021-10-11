@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace MascotaFeliz.App.Dominio
 {
     public class Veterinario : Persona
