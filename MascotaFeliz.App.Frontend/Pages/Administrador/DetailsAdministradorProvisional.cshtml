@@ -1,5 +1,5 @@
 ﻿@page
-@model MyApp.Namespace.DetailsAdministradorProvisionalModel
+@model MascotaFeliz.App.Frontend.Pages.DetailsAdministradorProvisionalModel
 @{
 }
 <h2>@Model.Administrador.Nombre @Model.Administrador.Apellidos</h2>
@@ -15,8 +15,8 @@
 <div>
     Correo Electrónico: @Model.Administrador.CorreoElectronico
 </div>
-@*<form method="post">
+<form method="post">
     <input type="hidden" asp-for = "Administrador.Id"/>
     <button type="submit" class = "btn btn-primary">Eliminar</button>
-</form>*@
+</form>
 <a asp-page = "./ListAdministradoresProvisional" class = "btn-default">Lista de Administradores</a>
