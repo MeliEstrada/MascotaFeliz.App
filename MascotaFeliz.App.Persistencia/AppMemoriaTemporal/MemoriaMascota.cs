@@ -14,32 +14,41 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
         {
              propietarios = new List<Propietario>
             {
-                   new Propietario{Id=1, Nombre="Andrea Jaqueline",
-                   Apellidos="Solarte Canaval", NumeroTelefono="3133853491",
-                   CorreoElectronico="Andrea.solarte72@gmail.com"},
-                   new Propietario{Id=2, Nombre="Daniela Marcela",
-                   Apellidos="Becerra Sosa", NumeroTelefono="3214952185",
-                   CorreoElectronico="danielabecerrasosa@gmail.com"},
-                   new Propietario{Id=3, Nombre="Juan Carlos",
-                   Apellidos="Carvajal Tapias", NumeroTelefono="3158556483",
-                   CorreoElectronico="juanc.carvajal72@gmail.com"},
-                   new Propietario{Id=4, Nombre="Melissa Andrea",
-                   Apellidos="Estrada Marín", NumeroTelefono="3004610198",
-                   CorreoElectronico="andreita_9815@hotmail.com"},
-                   new Propietario{Id=5, Nombre="Robin",
-                   Apellidos="Benítez Mora", NumeroTelefono="3008060020",
-                   CorreoElectronico="robinbenitez@yahoo.com"}
+                new Propietario{Id=1, Nombre="Andrea Jaqueline",
+                Apellidos="Solarte Canaval", NumeroTelefono="3133853491",
+                CorreoElectronico="Andrea.solarte72@gmail.com"},
+                new Propietario{Id=2, Nombre="Daniela Marcela",
+                Apellidos="Becerra Sosa", NumeroTelefono="3214952185",
+                CorreoElectronico="danielabecerrasosa@gmail.com"},
+                new Propietario{Id=3, Nombre="Juan Carlos",
+                Apellidos="Carvajal Tapias", NumeroTelefono="3158556483",
+                CorreoElectronico="juanc.carvajal72@gmail.com"},
+                new Propietario{Id=4, Nombre="Melissa Andrea",
+                Apellidos="Estrada Marín", NumeroTelefono="3004610198",
+                CorreoElectronico="andreita_9815@hotmail.com"},
+                new Propietario{Id=5, Nombre="Robin",
+                Apellidos="Benítez Mora", NumeroTelefono="3008060020",
+                CorreoElectronico="robinbenitez@yahoo.com"}
             };
             
             mascotas = new List<Mascota>()
             {
-                 new Mascota{Id=1, Nombre="Hinata",TipoMascota=TipoMascota.Gato, Raza="Persa",Genero=GeneroMascota.Hembra, Propietario=propietarios[0]},
-                 new Mascota{Id=2, Nombre="Manchas",TipoMascota=TipoMascota.Perro, Raza="Dalmatan",Genero=GeneroMascota.Macho, Propietario=propietarios[1]},
-                 new Mascota{Id=3, Nombre="Max",TipoMascota=TipoMascota.Perro, Raza="Labrador",Genero=GeneroMascota.Macho, Propietario=propietarios[2]},
-                 new Mascota{Id=4, Nombre="Miss",TipoMascota=TipoMascota.Gato, Raza="Siamés",Genero=GeneroMascota.Hembra,Propietario=propietarios[3]},
-                 new Mascota{Id=5, Nombre="Firulais",TipoMascota=TipoMascota.Perro, Raza="Pastor Aleman",Genero=GeneroMascota.Macho, Propietario=propietarios[4]}
+                new Mascota{Id=1, Nombre="Hinata",
+                    TipoMascota=TipoMascota.Gato, Raza="Persa",
+                    Genero=GeneroMascota.Hembra, Propietario=propietarios[0]},
+                new Mascota{Id=2, Nombre="Manchas",
+                    TipoMascota=TipoMascota.Perro, Raza="Dalmatan",
+                    Genero=GeneroMascota.Macho, Propietario=propietarios[1]},
+                new Mascota{Id=3, Nombre="Max",
+                TipoMascota=TipoMascota.Perro, Raza="Labrador",
+                    Genero=GeneroMascota.Macho, Propietario=propietarios[2]},
+                new Mascota{Id=4, Nombre="Miss",
+                    TipoMascota=TipoMascota.Gato, Raza="Siamés",
+                    Genero=GeneroMascota.Hembra,Propietario=propietarios[3]},
+                new Mascota{Id=5, Nombre="Firulais",
+                    TipoMascota=TipoMascota.Perro, Raza="Pastor Aleman",
+                    Genero=GeneroMascota.Macho, Propietario=propietarios[4]}
             };
-
         }
 
         public Mascota AddMascota(Mascota nuevaMascota)

@@ -2,18 +2,30 @@
 @model MascotaFeliz.App.Frontend.Pages.DetailsConsultaProvisionalModel
 @{
 }
-<h2>@Model.ConsultaDomiciliaria.Fecha @Model.ConsultaDomiciliaria.Hora</h2>
+<h2>@Model.ConsultaDomiciliaria.Mascota.Nombre @Model.ConsultaDomiciliaria.Hora</h2>
 <div>
-    Fecha: @Model.ConsultaDomiciliaria.Fecha
+    Mascota: @Model.ConsultaDomiciliaria.Mascota.Nombre
+</div>
+<div>
+    Tipo: @Model.ConsultaDomiciliaria.Mascota.TipoMascota
+</div>
+<div>
+    Veterinario: @Model.ConsultaDomiciliaria.Veterinario.Nombre @Model.ConsultaDomiciliaria.Veterinario.Apellidos
+</div>
+<div>
+    Fecha: @Model.ConsultaDomiciliaria.Fecha
 </div>
 <div>Hora
-    Hora: @Model.ConsultaDomiciliaria.Fecha
+    Hora: @Model.ConsultaDomiciliaria.Fecha
 </div>
 <div>
-    Mascota: @Model.ConsultaDomiciliaria.Mascota
+    Temperatura: @Model.ConsultaDomiciliaria.Temperatura
+</div>
+<div>
+    Peso: @Model.ConsultaDomiciliaria.Peso
 </div>
 <form method="post">
-    <input type="hidden" asp-for="ConsultaDomiciliaria.Id"/>
-    <button type="submit" class="btn btn-primary">Eliminar</button>
+    <input type="hidden" asp-for="ConsultaDomiciliaria.Id"/>
+    <button type="submit" class="btn btn-primary">Eliminar</button>
 </form>
-<a asp-page="./ListConsultasProvisional" class="btn.default">Lista de Consultas</a>></a>
+<a asp-page="./ListConsultasProvisional" class="btn.default">Lista de Consultas</a>
