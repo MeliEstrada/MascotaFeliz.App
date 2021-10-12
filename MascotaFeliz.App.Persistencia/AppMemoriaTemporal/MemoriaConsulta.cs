@@ -67,16 +67,16 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
 
             consultas = new List<ConsultaDomiciliaria>
             {
-                new ConsultaDomiciliaria{Id=1, Mascota=mascotas[1],
-                    Veterinario=veterinarios[1], Status=StatusConsulta.Efectuada,
+                new ConsultaDomiciliaria{Id=1, Mascota=mascotas[0],
+                    Veterinario=veterinarios[0], Status=StatusConsulta.Efectuada,
                     Fecha=System.DateTime.Today, Hora=System.DateTime.Now,
                     Temperatura=37.5F, Peso=3.4F},
-                new ConsultaDomiciliaria{Id=2, Mascota=mascotas[2],
-                    Veterinario=veterinarios[2], Status=StatusConsulta.Agendada,
+                new ConsultaDomiciliaria{Id=2, Mascota=mascotas[1],
+                    Veterinario=veterinarios[1], Status=StatusConsulta.Agendada,
                     Fecha=System.DateTime.Today, Hora=System.DateTime.Now,
                     Temperatura=37.5F , Peso=3.4F},
-                new ConsultaDomiciliaria{Id=3, Mascota=mascotas[3],
-                    Veterinario=veterinarios[1], Status=StatusConsulta.Solicitada,
+                new ConsultaDomiciliaria{Id=3, Mascota=mascotas[2],
+                    Veterinario=veterinarios[0], Status=StatusConsulta.Solicitada,
                     Fecha=System.DateTime.Today, Hora=System.DateTime.Now,
                     Temperatura=37.5F , Peso=3.4F},
             };
