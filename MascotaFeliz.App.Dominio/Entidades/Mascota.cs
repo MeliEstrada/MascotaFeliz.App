@@ -5,7 +5,6 @@ namespace MascotaFeliz.App.Dominio
 {
     public class Mascota
     {
-        [Required]
         public int Id {get;set;}
         public string Nombre {get;set;}
         public TipoMascota TipoMascota {get;set;}

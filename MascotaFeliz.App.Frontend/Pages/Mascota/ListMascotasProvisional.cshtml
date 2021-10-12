@@ -26,12 +26,13 @@
     {
         <tr>
             <td>@mascota.Nombre</td>
+            <td>@mascota.TipoMascota</td>
             <td>@mascota.Raza</td>
             <td>@mascota.Genero</td>
             <td>@mascota.Propietario.Nombre @mascota.Propietario.Apellidos</td>
             <td>
                 <a 
-                    class="btn btn-primary table-btn" 
+                    class="btn btn-primary table-btn"
                     asp-page="./DetailsMascotaProvisional"
                     asp-route-mascotaId="@mascota.Id">
                     <i class="fas fa-info-circle fa-lg"></i>
@@ -39,8 +40,8 @@
                 </a>
             </td>
             <td>
-                <a 
-                    class="btn btn-primary table-btn" 
+                <a
+                    class="btn btn-primary table-btn"
                     asp-page="./EditMascotaProvisional"
                     asp-route-mascotaId="@mascota.Id">
                     <i class="fas fa-address-book fa-lg" aria-hidden="true"></i>
@@ -51,4 +52,3 @@
     }
 </table>
 <a asp-page="./EditMascotaProvisional" class="btn btn-primary">Adicionar Mascota</a>
-
