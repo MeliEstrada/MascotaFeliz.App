@@ -28,6 +28,6 @@ namespace MascotaFeliz.App.Frontend.Pages
             Veterinarios = memoriaVeterinario.GetVeterinariosPorFiltro(
                 filtroBusqueda);
         }
+        
     }
 }
-

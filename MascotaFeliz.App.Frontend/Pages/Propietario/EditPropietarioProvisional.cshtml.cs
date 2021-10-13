@@ -34,14 +34,10 @@ namespace MascotaFeliz.App.Frontend.Pages
         {
             if (!ModelState.IsValid) return Page();
             if (Propietario.Id > 0)
-            {
                 Propietario = memoriaPropietario.UpdatePropietario(Propietario);
-            }
             else
-            {
                 Propietario = memoriaPropietario.AddPropietario(Propietario);
-            }
-            return Page();
+            return RedirectToPage("./ListPropietariosProvisional");
         }
 
     }

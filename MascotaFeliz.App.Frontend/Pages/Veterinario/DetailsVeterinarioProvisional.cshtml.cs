@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MascotaFeliz.App.Frontend.Pages
-
 {
     public class DetailsVeterinarioProvisionalModel : PageModel
     {
@@ -33,7 +32,8 @@ namespace MascotaFeliz.App.Frontend.Pages
         {
             if (!ModelState.IsValid) return Page();
             memoriaVeterinario.DeleteVeterinario(Veterinario.Id);
-            return Page();
+            return RedirectToPage("./ListVeterinariosProvisional");
         }
+        
     }
 }

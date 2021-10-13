@@ -34,14 +34,10 @@ namespace MascotaFeliz.App.Frontend.Pages
         {
             if (!ModelState.IsValid) return Page();
             if (Veterinario.Id > 0)
-            {
                 Veterinario = memoriaVeterinario.UpdateVeterinario(Veterinario);
-            }
             else
-            {
                 Veterinario = memoriaVeterinario.AddVeterinario(Veterinario);
-            }
-            return Page();
+            return RedirectToPage("./ListVeterinariosProvisional");
         }
 
     }

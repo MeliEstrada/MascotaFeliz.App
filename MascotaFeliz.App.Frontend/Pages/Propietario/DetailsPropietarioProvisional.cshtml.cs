@@ -32,7 +32,8 @@ namespace MascotaFeliz.App.Frontend.Pages
         {
             if (!ModelState.IsValid) return Page();
             memoriaPropietario.DeletePropietario(Propietario.Id);
-            return Page();
+            return RedirectToPage("./ListPropietariosProvisional");
         }
+        
     }
 }

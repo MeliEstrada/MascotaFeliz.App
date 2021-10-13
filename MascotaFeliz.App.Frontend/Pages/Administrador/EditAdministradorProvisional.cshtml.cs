@@ -33,14 +33,11 @@ namespace MascotaFeliz.App.Frontend.Pages
         {
             if (!ModelState.IsValid) return Page();
             if (Administrador.Id > 0)
-            {
                 Administrador = memoriaAdministrador.UpdateAdministrador(Administrador);
-            }
             else
-            {
                 Administrador = memoriaAdministrador.AddAdministrador(Administrador);
-            }
-            return Page();
+            return RedirectToPage("./ListAdministradoresProvisional");
         }
+        
     }
 }
