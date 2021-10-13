@@ -12,36 +12,47 @@ namespace MascotaFeliz.App.Frontend.Pages
     public class EditMascotaProvisionalModel : PageModel
     {
         private readonly IMemoriaMascota memoriaMascota;
+        private readonly IMemoriaPropietario memoriaPropietario; // Adición
         [BindProperty]
         public Mascota Mascota {get;set;}
+        [BindProperty(SupportsGet = true)] // Adición
+        public int propietarioId {get;set;} // Adición
+        [BindProperty(SupportsGet = true)] // Adición
+        public IEnumerable<Propietario> Propietarios {get;set;} // Adición
 
+        // Parámetro adicionado
         public EditMascotaProvisionalModel(
-            IMemoriaMascota memoriaMascota)
+            IMemoriaMascota memoriaMascota, IMemoriaPropietario memoriaPropietario)
         {
             this.memoriaMascota = memoriaMascota;
+            this.memoriaPropietario = memoriaPropietario; // Adición
         }
 
         public IActionResult OnGet(int? mascotaId)
+        // public IActionResult OnGet(int? mascotaId, int? propietarioId)
         {
+            Propietarios = memoriaPropietario.GetAllPropietarios(); // Adición
             if (!mascotaId.HasValue) Mascota = new Mascota();
-            else Mascota =
-                memoriaMascota.GetMascota(mascotaId.Value);
+            else
+            {
+                Mascota = memoriaMascota.GetMascota(mascotaId.Value);
+                propietarioId = Mascota.Propietario.Id;
+            }
             if (Mascota == null) return RedirectToPage("./NotFound");
             else return Page();
         }
 
         public IActionResult OnPost()
         {
+            Propietarios = memoriaPropietario.GetAllPropietarios(); // Adición
             if (!ModelState.IsValid) return Page();
             if (Mascota.Id > 0)
-            {
-              Mascota = memoriaMascota.UpdateMascota(Mascota);
-            }
+                Mascota = memoriaMascota.UpdateMascota(Mascota);
             else
-            {
                 Mascota = memoriaMascota.AddMascota(Mascota);
-            }
-            return Page();
+            Mascota = memoriaMascota.AsignarPropietario(Mascota, propietarioId);
+            Mascota = memoriaMascota.UpdateMascota(Mascota);
+            return RedirectToPage("./ListMascotasProvisional");
         }
 
     }
