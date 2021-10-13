@@ -28,5 +28,6 @@ namespace MascotaFeliz.App.Frontend.Pages
                 Mascotas = memoriaMascota.GetMascotasPorFiltro(
                 filtroBusqueda);
         }
+        
     }
 }

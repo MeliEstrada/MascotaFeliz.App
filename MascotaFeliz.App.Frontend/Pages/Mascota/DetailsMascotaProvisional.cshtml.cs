@@ -32,7 +32,7 @@ namespace MascotaFeliz.App.Frontend.Pages
         {
             if (!ModelState.IsValid) return Page();
             memoriaMascota.DeleteMascota(Mascota.Id);
-            return Page();
+            return RedirectToPage("./ListMascotasProvisional");
         }
 
     }
