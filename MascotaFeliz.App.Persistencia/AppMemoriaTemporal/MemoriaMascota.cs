@@ -7,29 +7,15 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
 {
     public class MemoriaMascota : IMemoriaMascota
     {
+        private readonly IMemoriaPropietario memoriaPropietario;
         List<Propietario> propietarios;
         List<Mascota> mascotas;
 
-        public MemoriaMascota()
+        public MemoriaMascota(IMemoriaPropietario memoriaPropietario)
         {
-             propietarios = new List<Propietario>
-            {
-                new Propietario{Id=1, Nombre="Andrea Jaqueline",
-                Apellidos="Solarte Canaval", NumeroTelefono="3133853491",
-                CorreoElectronico="Andrea.solarte72@gmail.com"},
-                new Propietario{Id=2, Nombre="Daniela Marcela",
-                Apellidos="Becerra Sosa", NumeroTelefono="3214952185",
-                CorreoElectronico="danielabecerrasosa@gmail.com"},
-                new Propietario{Id=3, Nombre="Juan Carlos",
-                Apellidos="Carvajal Tapias", NumeroTelefono="3158556483",
-                CorreoElectronico="juanc.carvajal72@gmail.com"},
-                new Propietario{Id=4, Nombre="Melissa Andrea",
-                Apellidos="Estrada Marín", NumeroTelefono="3004610198",
-                CorreoElectronico="andreita_9815@hotmail.com"},
-                new Propietario{Id=5, Nombre="Robin",
-                Apellidos="Benítez Mora", NumeroTelefono="3008060020",
-                CorreoElectronico="robinbenitez@yahoo.com"}
-            };
+            this.memoriaPropietario = memoriaPropietario;
+            
+            propietarios = (List<Propietario>)memoriaPropietario.GetAllPropietarios();
             
             mascotas = new List<Mascota>()
             {
@@ -56,6 +42,16 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
             nuevaMascota.Id = mascotas.Max(r => r.Id) + 1;
             mascotas.Add(nuevaMascota);
             return nuevaMascota;
+        }
+
+        public Mascota AsignarPropietario(
+            Mascota mascotaAModificar, int idPropietario)
+        {
+            var propietarioEncontrado =
+                propietarios.FirstOrDefault(p => p.Id == idPropietario);
+            if (propietarioEncontrado != null)
+                mascotaAModificar.Propietario = propietarioEncontrado;
+            return mascotaAModificar;
         }
 
         public void DeleteMascota(int mascotaId)
@@ -90,15 +86,15 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
             }
             return mascotas;
         }
-        public Mascota UpdateMascota(Mascota mascotaActualizado)
+        public Mascota UpdateMascota(Mascota mascotaActualizada)
         {
-            var mascota = mascotas.SingleOrDefault(r => r.Id == mascotaActualizado.Id);
+            var mascota =  GetMascota(mascotaActualizada.Id);
             if (mascota != null)
             {
-                mascota.Nombre=mascotaActualizado.Nombre;
-                mascota.Raza=mascotaActualizado.Raza;
-                mascota.TipoMascota=mascotaActualizado.TipoMascota;
-                mascota.Propietario=mascotaActualizado.Propietario;
+                mascota.Nombre=mascotaActualizada.Nombre;
+                mascota.Raza=mascotaActualizada.Raza;
+                mascota.TipoMascota=mascotaActualizada.TipoMascota;
+                mascota.Propietario=mascotaActualizada.Propietario;
             }
             return mascota;
         }
