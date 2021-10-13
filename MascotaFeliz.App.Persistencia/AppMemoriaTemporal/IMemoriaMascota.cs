@@ -3,7 +3,6 @@ using MascotaFeliz.App.Dominio;
 
 namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
 {
-    
     public interface IMemoriaMascota
     {
         IEnumerable<Mascota> GetAllMascotas();
@@ -11,6 +10,7 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
         Mascota GetMascota(int mascotaId);
         Mascota UpdateMascota(Mascota mascotaActualizada);
         Mascota AddMascota(Mascota nuevaMascota);
-        void DeleteMascota(int MascotaId);   
+        void DeleteMascota(int MascotaId);
+        Mascota AsignarPropietario(Mascota mascotaAModificar, int idPropietario);
     }
  }

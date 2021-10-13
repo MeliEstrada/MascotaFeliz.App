@@ -7,63 +7,21 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
 {
     public class MemoriaConsulta : IMemoriaConsulta
     {
-        List<Propietario> propietarios;
+        private readonly IMemoriaMascota memoriaMascota;
+        private readonly IMemoriaVeterinario memoriaVeterinario;
         List<Mascota> mascotas;
         List<Veterinario> veterinarios;
         List<ConsultaDomiciliaria> consultas;
 
-        public MemoriaConsulta()
+        public MemoriaConsulta(IMemoriaMascota memoriaMascota,
+            IMemoriaVeterinario memoriaVeterinario)
         {
-             propietarios = new List<Propietario>
-            {
-                new Propietario{Id=1, Nombre="Andrea Jaqueline",
-                Apellidos="Solarte Canaval", NumeroTelefono="3133853491",
-                CorreoElectronico="Andrea.solarte72@gmail.com"},
-                new Propietario{Id=2, Nombre="Daniela Marcela",
-                Apellidos="Becerra Sosa", NumeroTelefono="3214952185",
-                CorreoElectronico="danielabecerrasosa@gmail.com"},
-                new Propietario{Id=3, Nombre="Juan Carlos",
-                Apellidos="Carvajal Tapias", NumeroTelefono="3158556483",
-                CorreoElectronico="juanc.carvajal72@gmail.com"},
-                new Propietario{Id=4, Nombre="Melissa Andrea",
-                Apellidos="Estrada Marín", NumeroTelefono="3004610198",
-                CorreoElectronico="andreita_9815@hotmail.com"},
-                new Propietario{Id=5, Nombre="Robin",
-                Apellidos="Benítez Mora", NumeroTelefono="3008060020",
-                CorreoElectronico="robinbenitez@yahoo.com"}
-            };
+            this.memoriaMascota = memoriaMascota;
+            this.memoriaVeterinario = memoriaVeterinario;
 
-            mascotas = new List<Mascota>()
-            {
-                new Mascota{Id=1, Nombre="Hinata",
-                    TipoMascota=TipoMascota.Gato, Raza="Persa",
-                    Genero=GeneroMascota.Hembra, Propietario=propietarios[0]},
-                new Mascota{Id=2, Nombre="Manchas",
-                    TipoMascota=TipoMascota.Perro, Raza="Dalmatan",
-                    Genero=GeneroMascota.Macho, Propietario=propietarios[1]},
-                new Mascota{Id=3, Nombre="Max",
-                TipoMascota=TipoMascota.Perro, Raza="Labrador",
-                    Genero=GeneroMascota.Macho, Propietario=propietarios[2]},
-                new Mascota{Id=4, Nombre="Miss",
-                    TipoMascota=TipoMascota.Gato, Raza="Siamés",
-                    Genero=GeneroMascota.Hembra,Propietario=propietarios[3]},
-                new Mascota{Id=5, Nombre="Firulais",
-                    TipoMascota=TipoMascota.Perro, Raza="Pastor Aleman",
-                    Genero=GeneroMascota.Macho, Propietario=propietarios[4]}
-            };
-
-            veterinarios = new List<Veterinario>
-            {
-                new Veterinario{Id=1, Nombre="Juanita",
-                    Apellidos="Guarnizo", NumeroTelefono="3133213491",
-                    CorreoElectronico="Juanita.guarnizo@gmail.com",
-                    TarjetaProfesional="78901"},
-                
-                new Veterinario{Id=2, Nombre="Samuel",
-                    Apellidos="Marin", NumeroTelefono="3103205678",
-                    CorreoElectronico="Samuel.marin@gmail.com",
-                    TarjetaProfesional="12345"},
-            };
+            mascotas = (List<Mascota>)memoriaMascota.GetAllMascotas();
+            veterinarios =
+                (List<Veterinario>)memoriaVeterinario.GetAllVeterinarios();
 
             consultas = new List<ConsultaDomiciliaria>
             {
@@ -87,6 +45,26 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
             nuevaConsulta.Id = consultas.Max(c => c.Id) + 1;
             consultas.Add(nuevaConsulta);
             return nuevaConsulta;
+        }
+
+        public ConsultaDomiciliaria AsignarMascota(
+            ConsultaDomiciliaria consultaAModificar, int idMascota)
+        {
+            var mascotaEncontrada =
+                mascotas.FirstOrDefault(m => m.Id == idMascota);
+            if (mascotaEncontrada != null)
+                consultaAModificar.Mascota = mascotaEncontrada;
+            return consultaAModificar;
+        }
+
+        public ConsultaDomiciliaria AsignarVeterinario(
+            ConsultaDomiciliaria consultaAModificar, int idVeterinario)
+        {
+            var veterinarioEncontrado =
+                veterinarios.FirstOrDefault(m => m.Id == idVeterinario);
+            if (veterinarioEncontrado != null)
+                consultaAModificar.Veterinario = veterinarioEncontrado;
+            return consultaAModificar;
         }
 
         public void DeleteConsulta(int consultaId)
