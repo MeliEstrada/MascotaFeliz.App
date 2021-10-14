@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MascotaFeliz.App.Dominio;
 
-namespace MascotaFeliz.App.Persistencia
+namespace MascotaFeliz.App.Persistencia.AppRepositorios
 {
     public class RepositorioMascota : IRepositorioMascota
     {
@@ -18,27 +18,66 @@ namespace MascotaFeliz.App.Persistencia
             _appContext = appContext;
         }
 
-        Mascota IRepositorioMascota.AddMascota(Mascota mascota)
+        public Mascota AddMascota(Mascota mascota)
         {
             var mascotaAdicionada = _appContext.Mascotas.Add(mascota);
             _appContext.SaveChanges();
             return mascotaAdicionada.Entity;
         }
 
-        IEnumerable<Mascota> IRepositorioMascota.GetAllMascotas()
+        public Mascota AsignarPropietario(
+            Mascota mascotaAModificar, int idPropietario)
+        {
+            var propietarioEncontrado =
+                _appContext.Propietarios.FirstOrDefault(
+                    p => p.Id == idPropietario);
+            if (propietarioEncontrado != null)
+            {
+                mascotaAModificar.Propietario = propietarioEncontrado;
+                // _appContext.SaveChanges();
+            }
+            return mascotaAModificar;
+        }
+        public void DeleteMascota(int idMascota)
+        {
+            var mascotaEncontrada = GetMascota(idMascota);
+            if (mascotaEncontrada == null)
+                return;
+            _appContext.Mascotas.Remove(mascotaEncontrada);
+            _appContext.SaveChanges();
+        }
+
+        public IEnumerable<Mascota> GetAllMascotas()
         {
             return _appContext.Mascotas;
         }
 
-        Mascota IRepositorioMascota.GetMascota(int idMascota)
+        public Mascota GetMascota(int idMascota)
         {
             return _appContext.Mascotas.FirstOrDefault(m => m.Id == idMascota);
         }
 
-        Mascota IRepositorioMascota.UpdateMascota(Mascota mascota)
+        public IEnumerable<Mascota> GetMascotasPorFiltro(
+            string filtro=null)
+        // La asignación filtro=null indica que el parámetro filtro es opcional
         {
-            var mascotaEncontrada = 
-                _appContext.Mascotas.FirstOrDefault(m => m.Id == mascota.Id);
+            var mascotas = GetAllMascotas(); // Todas las mascotas
+            if (mascotas != null) // Si se tienen mascotas
+            {
+                // Si el filtro tiene algun valor
+                if (!String.IsNullOrEmpty(filtro))
+                {
+                    mascotas = mascotas.Where(
+                        m => (m.Nombre).Contains(filtro));
+                    // Filtra las mascotas que contienen el filtro
+                }
+            }
+            return mascotas;
+        }
+
+        public Mascota UpdateMascota(Mascota mascota)
+        {
+            var mascotaEncontrada = GetMascota(mascota.Id);
             if (mascotaEncontrada != null)
             {
                 mascotaEncontrada.Nombre = mascota.Nombre;
@@ -50,36 +89,6 @@ namespace MascotaFeliz.App.Persistencia
                 _appContext.SaveChanges();
             }
             return mascotaEncontrada;
-        }
-
-        void IRepositorioMascota.DeleteMascota(int idMascota)
-        {
-            var mascotaEncontrada = 
-                _appContext.Mascotas.FirstOrDefault(m => m.Id == idMascota);
-            if (mascotaEncontrada == null)
-                return;
-            _appContext.Mascotas.Remove(mascotaEncontrada);
-            _appContext.SaveChanges();
-        }
-
-        Propietario IRepositorioMascota.AsignarPropietario(
-            int idMascota, int idPropietario)
-        {
-            var mascotaEncontrada = _appContext.Mascotas.FirstOrDefault(
-                m => m.Id == idMascota);
-            if (mascotaEncontrada != null)
-            {
-                var propietarioEncontrado =
-                    _appContext.Propietarios.FirstOrDefault(
-                        p => p.Id == idPropietario);
-                if (propietarioEncontrado != null)
-                {
-                    mascotaEncontrada.Propietario = propietarioEncontrado;
-                    _appContext.SaveChanges();
-                }
-                return propietarioEncontrado;
-            }
-            return null;
         }
 
     }
