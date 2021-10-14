@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MascotaFeliz.App.Dominio;
 
-namespace MascotaFeliz.App.Persistencia
+namespace MascotaFeliz.App.Persistencia.AppRepositorios
 {
     public class RepositorioAdministrador : IRepositorioAdministrador
     {
