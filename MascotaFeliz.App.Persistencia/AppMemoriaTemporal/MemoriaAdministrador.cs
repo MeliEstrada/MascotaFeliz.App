@@ -53,26 +53,29 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
                 // Si el filtro tiene algun valor
                 if (!String.IsNullOrEmpty(filtro))
                 {
-                    administradores = administradores.Where(a => (a.Nombre + " " + a.Apellidos).Contains(filtro));
+                    administradores = administradores.Where(
+                        a => (a.Nombre + " " + a.Apellidos).Contains(filtro));
                     // Filtra los administradores que contienen el filtro
                 }
             }
             return administradores;
         }
 
-        public Administrador UpdateAdministrador(Administrador administradorActualizado)
+        public Administrador UpdateAdministrador(
+            Administrador administradorActualizado)
         {
             var administrador = GetAdministrador(administradorActualizado.Id);
             if (administrador != null)
             {
                 administrador.Nombre = administradorActualizado.Nombre;
                 administrador.Apellidos = administradorActualizado.Apellidos;
-                administrador.NumeroTelefono = administradorActualizado.NumeroTelefono;
-                administrador.CorreoElectronico = administradorActualizado.CorreoElectronico;
+                administrador.NumeroTelefono =
+                    administradorActualizado.NumeroTelefono;
+                administrador.CorreoElectronico =
+                    administradorActualizado.CorreoElectronico;
             }
             return administrador;
         }
         
     }
-
 }

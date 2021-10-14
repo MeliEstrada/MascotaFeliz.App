@@ -80,8 +80,10 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
             {
                 propietario.Nombre = propietarioActualizado.Nombre;
                 propietario.Apellidos = propietarioActualizado.Apellidos;
-                propietario.NumeroTelefono = propietarioActualizado.NumeroTelefono;
-                propietario.CorreoElectronico = propietarioActualizado.CorreoElectronico;
+                propietario.NumeroTelefono =
+                    propietarioActualizado.NumeroTelefono;
+                propietario.CorreoElectronico =
+                    propietarioActualizado.CorreoElectronico;
             }
             return propietario;
         }

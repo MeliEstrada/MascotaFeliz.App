@@ -74,9 +74,12 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
             {
                 veterinario.Nombre = veterinarioActualizado.Nombre;
                 veterinario.Apellidos = veterinarioActualizado.Apellidos;
-                veterinario.NumeroTelefono = veterinarioActualizado.NumeroTelefono;
-                veterinario.CorreoElectronico = veterinarioActualizado.CorreoElectronico;
-                veterinario.TarjetaProfesional = veterinarioActualizado.TarjetaProfesional;
+                veterinario.NumeroTelefono =
+                    veterinarioActualizado.NumeroTelefono;
+                veterinario.CorreoElectronico =
+                    veterinarioActualizado.CorreoElectronico;
+                veterinario.TarjetaProfesional =
+                    veterinarioActualizado.TarjetaProfesional;
             }
             return veterinario;
         }
