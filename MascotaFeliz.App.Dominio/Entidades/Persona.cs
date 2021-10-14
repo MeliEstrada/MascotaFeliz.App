@@ -14,9 +14,9 @@ namespace MascotaFeliz.App.Dominio
         public string NumeroTelefono {get;set;}
         [Required, StringLength(50)]
         public string CorreoElectronico {get;set;}
-        // [Required, StringLength(20)]
+        [Required, StringLength(20)]
         public string Usuario {get;set;}
-        // [Required, StringLength(20)]
+        [Required, StringLength(20)]
         public string Contrasenia {get;set;}
         public TipoUsuario TipoUsuario {get;set;}
     }
