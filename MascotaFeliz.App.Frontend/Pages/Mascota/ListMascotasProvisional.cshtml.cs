@@ -16,8 +16,7 @@ namespace MascotaFeliz.App.Frontend.Pages
         [BindProperty(SupportsGet = true)]
         public string FiltroBusqueda {get;set;}
 
-        public ListMascotasProvisionalModel(
-            IMemoriaMascota memoriaMascota)
+        public ListMascotasProvisionalModel(IMemoriaMascota memoriaMascota)
         {
             this.memoriaMascota = memoriaMascota;
         }
@@ -25,8 +24,7 @@ namespace MascotaFeliz.App.Frontend.Pages
         public void OnGet(string filtroBusqueda)
         {
             FiltroBusqueda = filtroBusqueda;
-                Mascotas = memoriaMascota.GetMascotasPorFiltro(
-                filtroBusqueda);
+            Mascotas = memoriaMascota.GetMascotasPorFiltro(filtroBusqueda);
         }
         
     }
