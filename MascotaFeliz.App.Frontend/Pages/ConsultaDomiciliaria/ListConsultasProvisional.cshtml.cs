@@ -14,7 +14,7 @@ namespace MascotaFeliz.App.Frontend.Pages
         private readonly IMemoriaConsulta memoriaConsulta;
         public IEnumerable<ConsultaDomiciliaria> Consultas {get; set;}
         [BindProperty(SupportsGet = true)]
-        public string FiltroBusqueda { get; set; }
+        public string FiltroBusqueda {get; set;}
 
         public ListConsultasProvisionalModel(IMemoriaConsulta memoriaConsulta)
         {
@@ -24,7 +24,8 @@ namespace MascotaFeliz.App.Frontend.Pages
         public void OnGet(string filtroBusqueda)
         {
             FiltroBusqueda = filtroBusqueda;
-            Consultas = memoriaConsulta.GetConsultasPorFiltro(FiltroBusqueda);
+            Consultas = memoriaConsulta.GetConsultasPorFiltro(filtroBusqueda);
         }
+
     }
 }

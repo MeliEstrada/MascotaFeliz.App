@@ -21,9 +21,9 @@ namespace MascotaFeliz.App.Frontend.Pages
             this.memoriaMascota = memoriaMascota;
         }
 
-        public IActionResult OnGet(int MascotaId)
+        public IActionResult OnGet(int mascotaId)
         {
-            Mascota = memoriaMascota.GetMascota(MascotaId);
+            Mascota = memoriaMascota.GetMascota(mascotaId);
             if (Mascota == null) return RedirectToPage("./NotFound");
             else return Page();
         }
@@ -32,7 +32,7 @@ namespace MascotaFeliz.App.Frontend.Pages
         {
             if (!ModelState.IsValid) return Page();
             memoriaMascota.DeleteMascota(Mascota.Id);
-            return Page();
+            return RedirectToPage("./ListMascotasProvisional");
         }
 
     }

@@ -65,9 +65,9 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
         {
             return mascotas;
         }
-        public Mascota GetMascota(int MascotaId)
+        public Mascota GetMascota(int mascotaId)
         {
-            return mascotas.SingleOrDefault(m => m.Id == MascotaId);
+            return mascotas.SingleOrDefault(m => m.Id == mascotaId);
         }
         public IEnumerable<Mascota> GetMascotasPorFiltro(
             string filtro=null)
@@ -91,13 +91,13 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
             var mascota =  GetMascota(mascotaActualizada.Id);
             if (mascota != null)
             {
-                mascota.Nombre=mascotaActualizada.Nombre;
-                mascota.Raza=mascotaActualizada.Raza;
-                mascota.TipoMascota=mascotaActualizada.TipoMascota;
-                mascota.Propietario=mascotaActualizada.Propietario;
+                mascota.Nombre = mascotaActualizada.Nombre;
+                mascota.Raza = mascotaActualizada.Raza;
+                mascota.TipoMascota = mascotaActualizada.TipoMascota;
+                mascota.Propietario = mascotaActualizada.Propietario;
             }
             return mascota;
         }
-    }
 
+    }
 }

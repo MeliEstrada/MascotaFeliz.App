@@ -2,21 +2,21 @@
 @model MascotaFeliz.App.Frontend.Pages.DetailsMascotaProvisionalModel
 @{
 }
-<h2>@Model.Mascota.Nombre @Model.Mascota.TipoMascota</h2>
+<h2>@Model.Mascota.Nombre (@Model.Mascota.TipoMascota)</h2>
 <div>
     Nombre: @Model.Mascota.Nombre
 </div>
 <div>
-    TipoMascota: @Model.Mascota.TipoMascota
+    Tipo: @Model.Mascota.TipoMascota
 </div>
 <div>
     Raza: @Model.Mascota.Raza
 </div>
 <div>
-   Genero: @Model.Mascota.Genero
+    Genero: @Model.Mascota.Genero
 </div>
 <div>
-   Propietario: @Model.Mascota.Propietario.Nombre @Model.Mascota.Propietario.Apellidos
+    Propietario: @Model.Mascota.Propietario.Nombre @Model.Mascota.Propietario.Apellidos
 </div>
 <form method="post">
     <input type="hidden" asp-for="Mascota.Id"/>

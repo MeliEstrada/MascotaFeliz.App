@@ -10,7 +10,7 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
         Mascota GetMascota(int mascotaId);
         Mascota UpdateMascota(Mascota mascotaActualizada);
         Mascota AddMascota(Mascota nuevaMascota);
-        void DeleteMascota(int MascotaId);
+        void DeleteMascota(int mascotaId);
         Mascota AsignarPropietario(Mascota mascotaAModificar, int idPropietario);
     }
  }
