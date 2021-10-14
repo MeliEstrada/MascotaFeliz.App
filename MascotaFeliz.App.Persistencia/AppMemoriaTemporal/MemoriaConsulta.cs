@@ -69,7 +69,7 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
 
         public void DeleteConsulta(int consultaId)
         {
-          var consultaEncontrada = GetConsulta(consultaId);
+            var consultaEncontrada = GetConsulta(consultaId);
             if (consultaEncontrada != null)
                 consultas.Remove(consultaEncontrada);
         }
@@ -96,7 +96,7 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
                 {
                     consultas = consultas.Where(
                         c => (c.Mascota.Nombre).Contains(filtro));
-                    // Filtra los propietarios que contienen el filtro
+                    // Filtra las consultas que contienen el filtro
                 }
             }
             return consultas;

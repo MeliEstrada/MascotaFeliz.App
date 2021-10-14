@@ -24,7 +24,7 @@ namespace MascotaFeliz.App.Frontend.Pages
         public void OnGet(string filtroBusqueda)
         {
             FiltroBusqueda = filtroBusqueda;
-            Consultas = memoriaConsulta.GetConsultasPorFiltro(FiltroBusqueda);
+            Consultas = memoriaConsulta.GetConsultasPorFiltro(filtroBusqueda);
         }
 
     }
