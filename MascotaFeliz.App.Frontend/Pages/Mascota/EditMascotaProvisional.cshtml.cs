@@ -21,22 +21,21 @@ namespace MascotaFeliz.App.Frontend.Pages
         public IEnumerable<Propietario> Propietarios {get;set;} // Adición
 
         // Parámetro adicionado
-        public EditMascotaProvisionalModel(
-            IMemoriaMascota memoriaMascota, IMemoriaPropietario memoriaPropietario)
+        public EditMascotaProvisionalModel(IMemoriaMascota memoriaMascota,
+            IMemoriaPropietario memoriaPropietario)
         {
             this.memoriaMascota = memoriaMascota;
             this.memoriaPropietario = memoriaPropietario; // Adición
         }
 
         public IActionResult OnGet(int? mascotaId)
-        // public IActionResult OnGet(int? mascotaId, int? propietarioId)
         {
             Propietarios = memoriaPropietario.GetAllPropietarios(); // Adición
             if (!mascotaId.HasValue) Mascota = new Mascota();
             else
             {
                 Mascota = memoriaMascota.GetMascota(mascotaId.Value);
-                propietarioId = Mascota.Propietario.Id;
+                propietarioId = Mascota.Propietario.Id; // Adición
             }
             if (Mascota == null) return RedirectToPage("./NotFound");
             else return Page();
@@ -46,10 +45,8 @@ namespace MascotaFeliz.App.Frontend.Pages
         {
             Propietarios = memoriaPropietario.GetAllPropietarios(); // Adición
             if (!ModelState.IsValid) return Page();
-            if (Mascota.Id > 0)
-                Mascota = memoriaMascota.UpdateMascota(Mascota);
-            else
-                Mascota = memoriaMascota.AddMascota(Mascota);
+            if (Mascota.Id > 0) Mascota = memoriaMascota.UpdateMascota(Mascota);
+            else Mascota = memoriaMascota.AddMascota(Mascota);
             Mascota = memoriaMascota.AsignarPropietario(Mascota, propietarioId);
             Mascota = memoriaMascota.UpdateMascota(Mascota);
             return RedirectToPage("./ListMascotasProvisional");

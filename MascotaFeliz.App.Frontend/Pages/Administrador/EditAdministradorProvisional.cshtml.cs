@@ -15,7 +15,8 @@ namespace MascotaFeliz.App.Frontend.Pages
         [BindProperty]
         public Administrador Administrador {get; set;}
 
-        public EditAdministradorProvisionalModel(IMemoriaAdministrador memoriaAdministrador)
+        public EditAdministradorProvisionalModel(
+            IMemoriaAdministrador memoriaAdministrador)
         {
             this.memoriaAdministrador = memoriaAdministrador;
         }
@@ -23,8 +24,8 @@ namespace MascotaFeliz.App.Frontend.Pages
         public IActionResult OnGet(int? administradorId)
         {
             if (!administradorId.HasValue) Administrador = new Administrador();
-            else Administrador = memoriaAdministrador.GetAdministrador(administradorId.Value);
-
+            else Administrador =
+                memoriaAdministrador.GetAdministrador(administradorId.Value);
             if (Administrador == null) return RedirectToPage("./NotFound");
             else return Page();
         }
@@ -32,10 +33,10 @@ namespace MascotaFeliz.App.Frontend.Pages
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid) return Page();
-            if (Administrador.Id > 0)
-                Administrador = memoriaAdministrador.UpdateAdministrador(Administrador);
-            else
-                Administrador = memoriaAdministrador.AddAdministrador(Administrador);
+            if (Administrador.Id > 0) Administrador =
+                memoriaAdministrador.UpdateAdministrador(Administrador);
+            else Administrador =
+                memoriaAdministrador.AddAdministrador(Administrador);
             return RedirectToPage("./ListAdministradoresProvisional");
         }
         
