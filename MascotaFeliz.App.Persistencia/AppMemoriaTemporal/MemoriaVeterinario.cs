@@ -16,7 +16,7 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
                 new Veterinario{Id=1, Nombre="Juanita",
                     Apellidos="Guarnizo", NumeroTelefono="3133213491",
                     CorreoElectronico="Juanita.guarnizo@gmail.com",
-                    TarjetaProfesional="78901"},
+                    TarjetaProfesional="67890"},
                 
                 new Veterinario{Id=2, Nombre="Samuel",
                     Apellidos="Marin", NumeroTelefono="3103205678",
@@ -50,7 +50,7 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
         }
 
         public IEnumerable<Veterinario> GetVeterinariosPorFiltro(
-            string filtro=null)
+            string filtro = null)
         // La asignación filtro=null indica que el parámetro filtro es opcional
         {
             var veterinarios = GetAllVeterinarios(); // Todos los veterinarios
