@@ -21,3 +21,4 @@ namespace MascotaFeliz.App.Dominio
         public TipoUsuario TipoUsuario {get;set;}
     }
 }
+
