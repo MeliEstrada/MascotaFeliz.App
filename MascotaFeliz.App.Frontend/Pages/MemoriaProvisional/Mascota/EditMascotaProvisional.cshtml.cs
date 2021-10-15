@@ -20,7 +20,7 @@ namespace MascotaFeliz.App.Frontend.Pages
         [BindProperty(SupportsGet = true)] // Adición
         public IEnumerable<Propietario> Propietarios {get;set;} // Adición
 
-        // Parámetro adicionado
+        // Parámetro Adicionado
         public EditMascotaProvisionalModel(IMemoriaMascota memoriaMascota,
             IMemoriaPropietario memoriaPropietario)
         {

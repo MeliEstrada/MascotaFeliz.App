@@ -25,7 +25,7 @@ public class EditConsultaProvisionalModel : PageModel
         [BindProperty(SupportsGet = true)] // Adición
         public IEnumerable<Veterinario> Veterinarios {get;set;} // Adición
 
-        // Parámetro adicionado8
+        // Parámetro adicionado
         public EditConsultaProvisionalModel(IMemoriaConsulta memoriaConsulta,
             IMemoriaMascota memoriaMascota,
             IMemoriaVeterinario memoriaVeterinario)
@@ -48,7 +48,8 @@ public class EditConsultaProvisionalModel : PageModel
                 mascotaId = ConsultaDomiciliaria.Mascota.Id; // Adición
                 veterinarioId = ConsultaDomiciliaria.Veterinario.Id; // Adición
             }
-            if (ConsultaDomiciliaria == null) return RedirectToPage("./NotFound");
+            if (ConsultaDomiciliaria == null)
+                return RedirectToPage("./NotFound");
             else return Page();
         }
 
