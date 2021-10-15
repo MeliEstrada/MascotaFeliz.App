@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 //using MascotaFeliz.App.Persistencia.AppMemoriaTemporal;
-using MascotaFeliz.App.Persistencia.AppRepositorios;
+//using MascotaFeliz.App.Persistencia.AppRepositorios;
+using MascotaFeliz.App.Persistencia;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,12 +33,12 @@ namespace MascotaFeliz.App.Frontend
             services.AddSingleton<IMemoriaPropietario, MemoriaPropietario>();
             services.AddSingleton<IMemoriaMascota, MemoriaMascota>();
             services.AddSingleton<IMemoriaConsulta, MemoriaConsulta>();
-            */
             
             services.AddSingleton<IRepositorioPropietario, RepositorioPropietario>();
             services.AddSingleton<IRepositorioVeterinario, RepositorioVeterinario>();
             services.AddSingleton<IRepositorioAdministrador, RepositorioAdministrador>();
             services.AddSingleton<IRepositorioMascota, RepositorioMascota>();
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
