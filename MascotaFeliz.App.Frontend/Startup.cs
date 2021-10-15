@@ -32,12 +32,12 @@ namespace MascotaFeliz.App.Frontend
             services.AddSingleton<IMemoriaPropietario, MemoriaPropietario>();
             services.AddSingleton<IMemoriaMascota, MemoriaMascota>();
             services.AddSingleton<IMemoriaConsulta, MemoriaConsulta>();
+            */
             
             services.AddSingleton<IRepositorioPropietario, RepositorioPropietario>();
             services.AddSingleton<IRepositorioVeterinario, RepositorioVeterinario>();
             services.AddSingleton<IRepositorioAdministrador, RepositorioAdministrador>();
             services.AddSingleton<IRepositorioMascota, RepositorioMascota>();
-            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
