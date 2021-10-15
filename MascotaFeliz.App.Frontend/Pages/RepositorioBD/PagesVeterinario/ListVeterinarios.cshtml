@@ -2,3 +2,49 @@
 @model MascotaFeliz.App.Frontend.Pages.ListVeterinariosModel
 @{
 }
+<h1>Listado de Veterinarios</h1>
+<form method="get">
+    <div class="form-group">
+        <p>
+            Filtro:
+            <input type="text" name="filtroBusqueda" asp-for="FiltroBusqueda"/>
+            <input type="submit" value="Filtrar"/>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <td><b>Nombre Completo</b></td>
+        <td><b>Número de Teléfono</b></td>
+        <td><b>Correo Electrónico</b></td>
+        <td><b>Detalles</b></td>
+        <td><b>Actualizar</b></td>
+    <tr>
+    @foreach (var veterinario in Model.Veterinarios)
+    {
+        <tr>
+            <td>@veterinario.Nombre @veterinario.Apellidos</td>
+            <td>@veterinario.NumeroTelefono</td>
+            <td>@veterinario.CorreoElectronico</td>
+            <td>
+                <a 
+                    class="btn btn-primary table-btn" 
+                    asp-page="./DetailsVeterinario"
+                    asp-route-veterinarioId="@veterinario.Id">
+                    <i class="fas fa-info-circle fa-lg"></i>
+                    @* Detalles Veterinario *@
+                </a>
+            </td>
+            <td>
+                <a 
+                    class="btn btn-primary table-btn" 
+                    asp-page="./EditVeterinario"
+                    asp-route-veterinarioId="@veterinario.Id">
+                    <i class="fas fa-address-book fa-lg" aria-hidden="true"></i>
+                    @* Actualizar Veterinario *@
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+<a asp-page="./EditVeterinario" class="btn btn-primary">Adicionar Veterinario</a>
