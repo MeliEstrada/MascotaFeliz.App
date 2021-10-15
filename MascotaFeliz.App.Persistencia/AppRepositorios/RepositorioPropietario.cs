@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using MascotaFeliz.App.Dominio;
@@ -17,60 +18,78 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
             _appContext = appContext;
         }
 
-        Propietario IRepositorioPropietario.AddPropietario(
-            Propietario propietario)
+        public Propietario AddPropietario(Propietario nuevoPropietario)
         {
             var propietarioAdicionado =
-                _appContext.Propietarios.Add(propietario);
+                _appContext.Propietarios.Add(nuevoPropietario);
             _appContext.SaveChanges();
             return propietarioAdicionado.Entity;
         }
 
-        IEnumerable<Propietario> IRepositorioPropietario.GetAllPropietarios()
+        public void DeletePropietario(int idPropietario)
+        {
+            var propietarioEncontrado = GetPropietario(idPropietario);
+            if (propietarioEncontrado == null) return;
+            _appContext.Propietarios.Remove(propietarioEncontrado);
+            _appContext.SaveChanges();
+        }
+
+        public IEnumerable<Propietario> GetAllPropietarios()
         {
             return _appContext.Propietarios;
         }
 
-        Propietario IRepositorioPropietario.GetPropietario(int idPropietario)
+        public Propietario GetPropietario(int idPropietario)
         {
             return _appContext.Propietarios.FirstOrDefault(
                 p => p.Id == idPropietario);
         }
 
-        Propietario IRepositorioPropietario.UpdatePropietario(
-            Propietario propietario)
+        public IEnumerable<Propietario> GetPropietariosPorFiltro(
+            string filtro = null)
+        // La asignación filtro=null indica que el parámetro filtro es opcional
+        {
+            var propietarios = GetAllPropietarios(); // Todos los propietarios
+            if (propietarios != null) // Si se tienen propietarios
+            {
+                // Si el filtro tiene algun valor
+                if (!String.IsNullOrEmpty(filtro))
+                {
+                    propietarios = propietarios.Where(
+                        p => (p.Nombre + " " + p.Apellidos).Contains(filtro));
+                    // Filtra los propietarios que contienen el filtro
+                }
+            }
+            return propietarios;
+        }
+
+        public Propietario UpdatePropietario(
+            Propietario propietarioActualizado)
         {
             var propietarioEncontrado =
-                _appContext.Propietarios.FirstOrDefault(
-                    p => p.Id == propietario.Id);
+                GetPropietario(propietarioActualizado.Id);
             if (propietarioEncontrado != null)
             {
-                propietarioEncontrado.Nombre = propietario.Nombre;
-                propietarioEncontrado.Apellidos = propietario.Apellidos;
+                propietarioEncontrado.Nombre = propietarioActualizado.Nombre;
+                propietarioEncontrado.Apellidos =
+                    propietarioActualizado.Apellidos;
                 propietarioEncontrado.NumeroTelefono =
-                    propietario.NumeroTelefono;
+                    propietarioActualizado.NumeroTelefono;
                 propietarioEncontrado.CorreoElectronico =
-                    propietario.CorreoElectronico;
-                propietarioEncontrado.Usuario = propietario.Usuario;
-                propietarioEncontrado.Contrasenia = propietario.Contrasenia;
-                propietarioEncontrado.TipoUsuario = propietario.TipoUsuario;
+                    propietarioActualizado.CorreoElectronico;
+                propietarioEncontrado.Usuario =
+                    propietarioActualizado.Usuario;
+                propietarioEncontrado.Contrasenia =
+                    propietarioActualizado.Contrasenia;
+                propietarioEncontrado.TipoUsuario =
+                    propietarioActualizado.TipoUsuario;
                 propietarioEncontrado.Identificacion =
-                    propietario.Identificacion;
-                propietarioEncontrado.Direccion = propietario.Direccion;
+                    propietarioActualizado.Identificacion;
+                propietarioEncontrado.Direccion =
+                    propietarioActualizado.Direccion;
                 _appContext.SaveChanges();
             }
             return propietarioEncontrado;
-        }
-
-        void IRepositorioPropietario.DeletePropietario(int idPropietario)
-        {
-            var propietarioEncontrado =
-                _appContext.Propietarios.FirstOrDefault(
-                    p => p.Id == idPropietario);
-            if (propietarioEncontrado == null)
-                return;
-            _appContext.Propietarios.Remove(propietarioEncontrado);
-            _appContext.SaveChanges();
         }
 
     }

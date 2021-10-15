@@ -70,7 +70,7 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
             return mascotas.SingleOrDefault(m => m.Id == mascotaId);
         }
         public IEnumerable<Mascota> GetMascotasPorFiltro(
-            string filtro=null)
+            string filtro = null)
         // La asignación filtro=null indica que el parámetro filtro es opcional
         {
             var mascotas = GetAllMascotas(); // Todas las mascotas

@@ -18,60 +18,77 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
             _appContext = appContext;
         }
 
-        Veterinario IRepositorioVeterinario.AddVeterinario(
-            Veterinario veterinario)
+        public Veterinario AddVeterinario(Veterinario nuevoVeterinario)
         {
-            var veterinarioAdicionado = 
-                _appContext.Veterinarios.Add(veterinario);
+            var veterinarioAdicionado =
+                _appContext.Veterinarios.Add(nuevoVeterinario);
             _appContext.SaveChanges();
             return veterinarioAdicionado.Entity;
         }
 
-        IEnumerable<Veterinario> IRepositorioVeterinario.GetAllVeterinarios()
+        public void DeleteVeterinario(int idVeterinario)
+        {
+            var veterinarioEncontrado = GetVeterinario(idVeterinario);
+            if (veterinarioEncontrado == null) return;
+            _appContext.Veterinarios.Remove(veterinarioEncontrado);
+            _appContext.SaveChanges();
+        }
+
+        public IEnumerable<Veterinario> GetAllVeterinarios()
         {
             return _appContext.Veterinarios;
         }
 
-        Veterinario IRepositorioVeterinario.GetVeterinario(int idVeterinario)
+        public Veterinario GetVeterinario(int idVeterinario)
         {
             return _appContext.Veterinarios.FirstOrDefault(
-                v => v.Id == idVeterinario);
+                p => p.Id == idVeterinario);
         }
 
-        Veterinario IRepositorioVeterinario.UpdateVeterinario(
-            Veterinario veterinario)
+        public IEnumerable<Veterinario> GetVeterinariosPorFiltro(
+            string filtro = null)
+        // La asignación filtro=null indica que el parámetro filtro es opcional
+        {
+            var veterinarios = GetAllVeterinarios(); // Todos los veterinarios
+            if (veterinarios != null) // Si se tienen veterinarios
+            {
+                // Si el filtro tiene algun valor
+                if (!String.IsNullOrEmpty(filtro))
+                {
+                    veterinarios = veterinarios.Where(
+                        p => (p.Nombre + " " + p.Apellidos).Contains(filtro));
+                    // Filtra los veterinarios que contienen el filtro
+                }
+            }
+            return veterinarios;
+        }
+
+        public Veterinario UpdateVeterinario(
+            Veterinario veterinarioActualizado)
         {
             var veterinarioEncontrado =
-                _appContext.Veterinarios.FirstOrDefault(
-                    v => v.Id == veterinario.Id);
+                GetVeterinario(veterinarioActualizado.Id);
             if (veterinarioEncontrado != null)
             {
-                veterinarioEncontrado.Nombre = veterinario.Nombre;
-                veterinarioEncontrado.Apellidos = veterinario.Apellidos;
+                veterinarioEncontrado.Nombre = veterinarioActualizado.Nombre;
+                veterinarioEncontrado.Apellidos =
+                    veterinarioActualizado.Apellidos;
                 veterinarioEncontrado.NumeroTelefono =
-                    veterinario.NumeroTelefono;
+                    veterinarioActualizado.NumeroTelefono;
                 veterinarioEncontrado.CorreoElectronico =
-                    veterinario.CorreoElectronico;
-                veterinarioEncontrado.Usuario = veterinario.Usuario;
-                veterinarioEncontrado.Contrasenia = veterinario.Contrasenia;
-                veterinarioEncontrado.TipoUsuario = veterinario.TipoUsuario;
+                    veterinarioActualizado.CorreoElectronico;
+                veterinarioEncontrado.Usuario =
+                    veterinarioActualizado.Usuario;
+                veterinarioEncontrado.Contrasenia =
+                    veterinarioActualizado.Contrasenia;
+                veterinarioEncontrado.TipoUsuario =
+                    veterinarioActualizado.TipoUsuario;
                 veterinarioEncontrado.TarjetaProfesional =
-                    veterinario.TarjetaProfesional;
-                veterinarioEncontrado.Activo = veterinario.Activo;
+                    veterinarioEncontrado.TarjetaProfesional;
+                veterinarioEncontrado.Activo = veterinarioEncontrado.Activo;
                 _appContext.SaveChanges();
             }
             return veterinarioEncontrado;
-        }
-
-        void IRepositorioVeterinario.DeleteVeterinario(int idVeterinario)
-        {
-            var veterinarioEncontrado =
-                _appContext.Veterinarios.FirstOrDefault(
-                    v => v.Id == idVeterinario);
-            if (veterinarioEncontrado == null)
-                return;
-            _appContext.Veterinarios.Remove(veterinarioEncontrado);
-            _appContext.SaveChanges();
         }
 
     }

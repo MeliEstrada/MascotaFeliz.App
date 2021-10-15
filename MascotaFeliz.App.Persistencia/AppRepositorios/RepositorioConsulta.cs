@@ -18,103 +18,105 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
             _appContext = appContext;
         }
 
-        ConsultaDomiciliaria IRepositorioConsulta.AddConsulta(
-            ConsultaDomiciliaria consulta)
+        public ConsultaDomiciliaria AddConsulta(
+            ConsultaDomiciliaria nuevaConsulta)
         {
             var consultaAdicionada =
-                _appContext.ConsultasDomiciliarias.Add(consulta);
+                _appContext.ConsultasDomiciliarias.Add(nuevaConsulta);
             _appContext.SaveChanges();
             return consultaAdicionada.Entity;
         }
 
-        IEnumerable<ConsultaDomiciliaria> IRepositorioConsulta.GetAllConsultas()
+        public ConsultaDomiciliaria AsignarMascota(
+            ConsultaDomiciliaria consultaAModificar, int idMascota)
+        {
+            var mascotaEncontrada = _appContext.Mascotas.FirstOrDefault(
+                m => m.Id == idMascota);
+            if (mascotaEncontrada != null)
+            {
+                consultaAModificar.Mascota = mascotaEncontrada;
+                // _appContext.SaveChanges();
+            }
+            return consultaAModificar;
+        }
+
+        public ConsultaDomiciliaria AsignarVeterinario(
+            ConsultaDomiciliaria consultaAModificar, int idVeterinario)
+        {
+            var veterinarioEncontrado = _appContext.Veterinarios.FirstOrDefault(
+                v => v.Id == idVeterinario);
+            if (veterinarioEncontrado != null)
+            {
+                consultaAModificar.Veterinario = veterinarioEncontrado;
+                // _appContext.SaveChanges();
+            }
+            return consultaAModificar;
+        }
+
+        public void DeleteConsulta(int idConsulta)
+        {
+            var consultaEncontrada = GetConsulta(idConsulta);
+            if (consultaEncontrada == null) return;
+            _appContext.ConsultasDomiciliarias.Remove(consultaEncontrada);
+            _appContext.SaveChanges();
+        }
+
+        public IEnumerable<ConsultaDomiciliaria> GetAllConsultas()
         {
             return _appContext.ConsultasDomiciliarias;
         }
 
-        ConsultaDomiciliaria IRepositorioConsulta.GetConsulta(int idConsulta)
+        public ConsultaDomiciliaria GetConsulta(int idConsulta)
         {
             return _appContext.ConsultasDomiciliarias.FirstOrDefault(
                 cd => cd.Id == idConsulta);
         }
 
-        ConsultaDomiciliaria IRepositorioConsulta.UpdateConsulta(
-            ConsultaDomiciliaria consulta)
+        public IEnumerable<ConsultaDomiciliaria> GetConsultasPorFiltro(
+            string filtro = null)
+        // La asignación filtro=null indica que el parámetro filtro es opcional
         {
-            var consultaEncontrada =
-                _appContext.ConsultasDomiciliarias.FirstOrDefault(
-                    cd => cd.Id == consulta.Id);
+            var consultas = GetAllConsultas(); // Todas las consultas
+            if (consultas != null) // Si se tienen consultas
+            {
+                // Si el filtro tiene algun valor
+                if (!String.IsNullOrEmpty(filtro))
+                {
+                    consultas = consultas.Where(
+                        c => (c.Mascota.Nombre).Contains(filtro));
+                    // Filtra las consultas que contienen el filtro
+                }
+            }
+            return consultas;
+        }
+
+        public ConsultaDomiciliaria UpdateConsulta(
+            ConsultaDomiciliaria consultaActualizada)
+        {
+            var consultaEncontrada = GetConsulta(consultaActualizada.Id);
             if (consultaEncontrada != null)
             {
-                consultaEncontrada.Status = consulta.Status;
-                consultaEncontrada.Fecha = consulta.Fecha;
-                consultaEncontrada.Hora = consulta.Hora;
-                consultaEncontrada.Temperatura = consulta.Temperatura;
-                consultaEncontrada.Peso = consulta.Peso;
+                consultaEncontrada.Status = consultaActualizada.Status;
+                consultaEncontrada.Fecha = consultaActualizada.Fecha;
+                consultaEncontrada.Hora = consultaActualizada.Hora;
+                consultaEncontrada.Temperatura =
+                    consultaActualizada.Temperatura;
+                consultaEncontrada.Peso = consultaActualizada.Peso;
                 consultaEncontrada.FrecuenciaRespiratoria =
-                    consulta.FrecuenciaRespiratoria;
+                    consultaActualizada.FrecuenciaRespiratoria;
                 consultaEncontrada.FrecuenciaCardiaca =
-                    consulta.FrecuenciaCardiaca;
-                consultaEncontrada.EstadoAnimo = consulta.EstadoAnimo;
-                consultaEncontrada.Diagnostico = consulta.Diagnostico;
-                consultaEncontrada.Mascota = consulta.Mascota;
-                consultaEncontrada.Veterinario = consulta.Veterinario;
+                    consultaActualizada.FrecuenciaCardiaca;
+                consultaEncontrada.EstadoAnimo =
+                    consultaActualizada.EstadoAnimo;
+                consultaEncontrada.Diagnostico =
+                    consultaActualizada.Diagnostico;
+                consultaEncontrada.Mascota =
+                    consultaActualizada.Mascota;
+                consultaEncontrada.Veterinario =
+                    consultaActualizada.Veterinario;
                 _appContext.SaveChanges();
             }
             return consultaEncontrada;
-        }
-
-        void IRepositorioConsulta.DeleteConsulta(int idConsulta)
-        {
-            var consultaEncontrada =
-                _appContext.ConsultasDomiciliarias.FirstOrDefault(
-                    cd => cd.Id == idConsulta);
-            if (consultaEncontrada == null)
-                return;
-            _appContext.ConsultasDomiciliarias.Remove(consultaEncontrada);
-            _appContext.SaveChanges();
-        }
-
-        Mascota IRepositorioConsulta.AsignarMascota(
-            int idConsulta, int idMascota)
-        {
-            var consultaEncontrada =
-                _appContext.ConsultasDomiciliarias.FirstOrDefault(
-                    cd => cd.Id == idConsulta);
-            if (consultaEncontrada != null)
-            {
-                var mascotaEncontrada =
-                    _appContext.Mascotas.FirstOrDefault(
-                        m => m.Id == idMascota);
-                if (mascotaEncontrada != null)
-                {
-                    consultaEncontrada.Mascota = mascotaEncontrada;
-                    _appContext.SaveChanges();
-                }
-                return mascotaEncontrada;
-            }
-            return null;
-        }
-
-        Veterinario IRepositorioConsulta.AsignarVeterinario(
-            int idConsulta, int idVeterinario)
-        {
-            var consultaEncontrada =
-                _appContext.ConsultasDomiciliarias.FirstOrDefault(
-                    cd => cd.Id == idConsulta);
-            if (consultaEncontrada != null)
-            {
-                var veterinarioEncontrado =
-                    _appContext.Veterinarios.FirstOrDefault(
-                        v => v.Id == idVeterinario);
-                if (veterinarioEncontrado != null)
-                {
-                    consultaEncontrada.Veterinario = veterinarioEncontrado;
-                    _appContext.SaveChanges();
-                }
-                return veterinarioEncontrado;
-            }
-            return null;
         }
 
     }
