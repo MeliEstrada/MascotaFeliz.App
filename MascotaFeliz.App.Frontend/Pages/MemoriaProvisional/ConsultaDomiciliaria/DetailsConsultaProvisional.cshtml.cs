@@ -24,7 +24,8 @@ namespace MascotaFeliz.App.Frontend.Pages
         public IActionResult OnGet(int consultaId)
         {
             ConsultaDomiciliaria = memoriaConsulta.GetConsulta(consultaId);
-            if (ConsultaDomiciliaria == null) return RedirectToPage("./NotFound");
+            if (ConsultaDomiciliaria == null)
+                return RedirectToPage("./NotFound");
             else return Page();
         }
 
