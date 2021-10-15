@@ -7,6 +7,7 @@ using MascotaFeliz.App.Dominio;
 using MascotaFeliz.App.Persistencia;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+//using Microsoft.AspNetcore.Authorization;
 
 namespace MascotaFeliz.App.Frontend.Pages
 {
