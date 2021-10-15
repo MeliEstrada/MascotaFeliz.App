@@ -18,9 +18,9 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
             _appContext = appContext;
         }
 
-        public Mascota AddMascota(Mascota mascota)
+        public Mascota AddMascota(Mascota nuevaMascota)
         {
-            var mascotaAdicionada = _appContext.Mascotas.Add(mascota);
+            var mascotaAdicionada = _appContext.Mascotas.Add(nuevaMascota);
             _appContext.SaveChanges();
             return mascotaAdicionada.Entity;
         }
@@ -38,11 +38,11 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
             }
             return mascotaAModificar;
         }
+        
         public void DeleteMascota(int idMascota)
         {
             var mascotaEncontrada = GetMascota(idMascota);
-            if (mascotaEncontrada == null)
-                return;
+            if (mascotaEncontrada == null) return;
             _appContext.Mascotas.Remove(mascotaEncontrada);
             _appContext.SaveChanges();
         }
@@ -58,7 +58,7 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
         }
 
         public IEnumerable<Mascota> GetMascotasPorFiltro(
-            string filtro=null)
+            string filtro = null)
         // La asignación filtro=null indica que el parámetro filtro es opcional
         {
             var mascotas = GetAllMascotas(); // Todas las mascotas
@@ -75,17 +75,18 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
             return mascotas;
         }
 
-        public Mascota UpdateMascota(Mascota mascota)
+        public Mascota UpdateMascota(Mascota mascotaActualizada)
         {
-            var mascotaEncontrada = GetMascota(mascota.Id);
+            var mascotaEncontrada = GetMascota(mascotaActualizada.Id);
             if (mascotaEncontrada != null)
             {
-                mascotaEncontrada.Nombre = mascota.Nombre;
-                mascotaEncontrada.TipoMascota = mascota.TipoMascota;
-                mascotaEncontrada.Raza = mascota.Raza;
-                mascotaEncontrada.Genero = mascota.Genero;
-                mascotaEncontrada.AnioNacimiento = mascota.AnioNacimiento;
-                mascotaEncontrada.Propietario = mascota.Propietario;
+                mascotaEncontrada.Nombre = mascotaActualizada.Nombre;
+                mascotaEncontrada.TipoMascota = mascotaActualizada.TipoMascota;
+                mascotaEncontrada.Raza = mascotaActualizada.Raza;
+                mascotaEncontrada.Genero = mascotaActualizada.Genero;
+                mascotaEncontrada.AnioNacimiento =
+                    mascotaActualizada.AnioNacimiento;
+                mascotaEncontrada.Propietario = mascotaActualizada.Propietario;
                 _appContext.SaveChanges();
             }
             return mascotaEncontrada;

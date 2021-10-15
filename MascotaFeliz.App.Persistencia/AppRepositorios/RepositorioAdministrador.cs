@@ -18,58 +18,74 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
             _appContext = appContext;
         }
 
-        Administrador IRepositorioAdministrador.AddAdministrador(
-            Administrador administrador)
+        public Administrador AddAdministrador(Administrador nuevoAdministrador)
         {
             var administradorAdicionado =
-                _appContext.Administradores.Add(administrador);
+                _appContext.Administradores.Add(nuevoAdministrador);
             _appContext.SaveChanges();
             return administradorAdicionado.Entity;
         }
 
-        IEnumerable<Administrador> IRepositorioAdministrador.GetAllAdministradores()
+        public void DeleteAdministrador(int idAdministrador)
+        {
+            var administradorEncontrado = GetAdministrador(idAdministrador);
+            if (administradorEncontrado == null) return;
+            _appContext.Administradores.Remove(administradorEncontrado);
+            _appContext.SaveChanges();
+        }
+
+        public IEnumerable<Administrador> GetAllAdministradores()
         {
             return _appContext.Administradores;
         }
 
-        Administrador IRepositorioAdministrador.GetAdministrador(
-            int idAdministrador)
+        public Administrador GetAdministrador(int idAdministrador)
         {
             return _appContext.Administradores.FirstOrDefault(
-                a => a.Id == idAdministrador);
+                p => p.Id == idAdministrador);
         }
 
-        Administrador IRepositorioAdministrador.UpdateAdministrador(
-            Administrador administrador)
+        public IEnumerable<Administrador> GetAdministradoresPorFiltro(
+            string filtro = null)
+        // La asignación filtro=null indica que el parámetro filtro es opcional
+        {
+            var administradores = GetAllAdministradores(); // Todos los administradores
+            if (administradores != null) // Si se tienen administradores
+            {
+                // Si el filtro tiene algun valor
+                if (!String.IsNullOrEmpty(filtro))
+                {
+                    administradores = administradores.Where(
+                        p => (p.Nombre + " " + p.Apellidos).Contains(filtro));
+                    // Filtra los administradores que contienen el filtro
+                }
+            }
+            return administradores;
+        }
+
+        public Administrador UpdateAdministrador(
+            Administrador administradorActualizado)
         {
             var administradorEncontrado =
-                _appContext.Administradores.FirstOrDefault(
-                    a => a.Id == administrador.Id);
+                GetAdministrador(administradorActualizado.Id);
             if (administradorEncontrado != null)
             {
-                administradorEncontrado.Nombre = administrador.Nombre;
-                administradorEncontrado.Apellidos = administrador.Apellidos;
+                administradorEncontrado.Nombre = administradorActualizado.Nombre;
+                administradorEncontrado.Apellidos =
+                    administradorActualizado.Apellidos;
                 administradorEncontrado.NumeroTelefono =
-                    administrador.NumeroTelefono;
+                    administradorActualizado.NumeroTelefono;
                 administradorEncontrado.CorreoElectronico =
-                    administrador.CorreoElectronico;
-                administradorEncontrado.Usuario = administrador.Usuario;
-                administradorEncontrado.Contrasenia = administrador.Contrasenia;
-                administradorEncontrado.TipoUsuario = administrador.TipoUsuario;
+                    administradorActualizado.CorreoElectronico;
+                administradorEncontrado.Usuario =
+                    administradorActualizado.Usuario;
+                administradorEncontrado.Contrasenia =
+                    administradorActualizado.Contrasenia;
+                administradorEncontrado.TipoUsuario =
+                    administradorActualizado.TipoUsuario;
                 _appContext.SaveChanges();
             }
             return administradorEncontrado;
-        }
-
-        void IRepositorioAdministrador.DeleteAdministrador(int idAdministrador)
-        {
-            var administradorEncontrado =
-                _appContext.Administradores.FirstOrDefault(
-                    a => a.Id == idAdministrador);
-            if (administradorEncontrado == null)
-                return;
-            _appContext.Administradores.Remove(administradorEncontrado);
-            _appContext.SaveChanges();
         }
 
     }

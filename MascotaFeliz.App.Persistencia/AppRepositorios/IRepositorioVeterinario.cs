@@ -5,10 +5,11 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
 {
     public interface IRepositorioVeterinario
     {
-        Veterinario AddVeterinario(Veterinario veterinario);
+        Veterinario AddVeterinario(Veterinario nuevoVeterinario);
         IEnumerable<Veterinario> GetAllVeterinarios();
+        IEnumerable<Veterinario> GetVeterinariosPorFiltro(string filtro);
         Veterinario GetVeterinario(int idVeterinario);
-        Veterinario UpdateVeterinario(Veterinario veterinario);
+        Veterinario UpdateVeterinario(Veterinario VeterinarioActualizado);
         void DeleteVeterinario(int idVeterinario);
     }
 }

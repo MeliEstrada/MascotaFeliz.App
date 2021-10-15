@@ -5,12 +5,16 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
 {
     public interface IRepositorioConsulta
     {
-        ConsultaDomiciliaria AddConsulta(ConsultaDomiciliaria consulta);
+        ConsultaDomiciliaria AddConsulta(ConsultaDomiciliaria nuevaConsulta);
         IEnumerable<ConsultaDomiciliaria> GetAllConsultas();
+        IEnumerable<ConsultaDomiciliaria> GetConsultasPorFiltro(string filtro);
         ConsultaDomiciliaria GetConsulta(int idConsulta);
-        ConsultaDomiciliaria UpdateConsulta(ConsultaDomiciliaria consulta);
+        ConsultaDomiciliaria UpdateConsulta(
+            ConsultaDomiciliaria consultaActualizada);
         void DeleteConsulta(int idConsulta);
-        Mascota AsignarMascota(int idConsulta, int idMascota);
-        Veterinario AsignarVeterinario(int idConsulta, int idVeterinario);
+        ConsultaDomiciliaria AsignarMascota(
+            ConsultaDomiciliaria consultaAModificar, int idMascota);
+        ConsultaDomiciliaria AsignarVeterinario(
+            ConsultaDomiciliaria consultaAModificar, int idVeterinario);
     }
 }
