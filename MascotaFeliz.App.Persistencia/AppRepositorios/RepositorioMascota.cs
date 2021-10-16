@@ -28,9 +28,8 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
         public Mascota AsignarPropietario(
             Mascota mascotaAModificar, int idPropietario)
         {
-            var propietarioEncontrado =
-                _appContext.Propietarios.FirstOrDefault(
-                    p => p.Id == idPropietario);
+            var propietarioEncontrado = 
+                _appContext.Propietarios.FirstOrDefault(p => p.Id == idPropietario);
             if (propietarioEncontrado != null)
             {
                 mascotaAModificar.Propietario = propietarioEncontrado;
@@ -58,17 +57,17 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
         }
 
         public IEnumerable<Mascota> GetMascotasPorFiltro(
-            string filtro = null)
+            string filtroNombreMascota = null)
         // La asignación filtro=null indica que el parámetro filtro es opcional
         {
             var mascotas = GetAllMascotas(); // Todas las mascotas
             if (mascotas != null) // Si se tienen mascotas
             {
                 // Si el filtro tiene algun valor
-                if (!String.IsNullOrEmpty(filtro))
+                if (!String.IsNullOrEmpty(filtroNombreMascota))
                 {
                     mascotas = mascotas.Where(
-                        m => (m.Nombre).Contains(filtro));
+                        m => (m.Nombre).Contains(filtroNombreMascota));
                     // Filtra las mascotas que contienen el filtro
                 }
             }

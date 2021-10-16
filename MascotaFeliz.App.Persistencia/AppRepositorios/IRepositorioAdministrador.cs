@@ -7,7 +7,8 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
     {
         Administrador AddAdministrador(Administrador nuevoAdministrador);
         IEnumerable<Administrador> GetAllAdministradores();
-        IEnumerable<Administrador> GetAdministradoresPorFiltro(string filtro);
+        IEnumerable<Administrador> GetAdministradoresPorFiltro(
+            string filtroNombreApellidos);
         Administrador GetAdministrador(int idAdministrador);
         Administrador UpdateAdministrador(Administrador administradorActualizado);
         void DeleteAdministrador(int idAdministrador);

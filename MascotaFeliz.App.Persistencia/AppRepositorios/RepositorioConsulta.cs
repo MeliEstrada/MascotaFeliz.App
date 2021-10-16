@@ -30,8 +30,8 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
         public ConsultaDomiciliaria AsignarMascota(
             ConsultaDomiciliaria consultaAModificar, int idMascota)
         {
-            var mascotaEncontrada = _appContext.Mascotas.FirstOrDefault(
-                m => m.Id == idMascota);
+            var mascotaEncontrada =
+                _appContext.Mascotas.FirstOrDefault(m => m.Id == idMascota);
             if (mascotaEncontrada != null)
             {
                 consultaAModificar.Mascota = mascotaEncontrada;
@@ -43,8 +43,8 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
         public ConsultaDomiciliaria AsignarVeterinario(
             ConsultaDomiciliaria consultaAModificar, int idVeterinario)
         {
-            var veterinarioEncontrado = _appContext.Veterinarios.FirstOrDefault(
-                v => v.Id == idVeterinario);
+            var veterinarioEncontrado =
+                _appContext.Veterinarios.FirstOrDefault(v => v.Id == idVeterinario);
             if (veterinarioEncontrado != null)
             {
                 consultaAModificar.Veterinario = veterinarioEncontrado;
@@ -73,18 +73,18 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
         }
 
         public IEnumerable<ConsultaDomiciliaria> GetConsultasPorFiltro(
-            string filtro = null)
-        // La asignación filtro=null indica que el parámetro filtro es opcional
+            string FiltroNombreMascota = null)
+        // La asignación Filtro=null indica que el parámetro Filtro es opcional
         {
             var consultas = GetAllConsultas(); // Todas las consultas
             if (consultas != null) // Si se tienen consultas
             {
-                // Si el filtro tiene algun valor
-                if (!String.IsNullOrEmpty(filtro))
+                // Si el Filtro tiene algun valor
+                if (!String.IsNullOrEmpty(FiltroNombreMascota))
                 {
                     consultas = consultas.Where(
-                        c => (c.Mascota.Nombre).Contains(filtro));
-                    // Filtra las consultas que contienen el filtro
+                        c => (c.Mascota.Nombre).Contains(FiltroNombreMascota));
+                    // Filtra las consultas que contienen el Filtro
                 }
             }
             return consultas;
