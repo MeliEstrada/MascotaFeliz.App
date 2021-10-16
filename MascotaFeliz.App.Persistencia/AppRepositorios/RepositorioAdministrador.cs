@@ -46,17 +46,18 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
         }
 
         public IEnumerable<Administrador> GetAdministradoresPorFiltro(
-            string filtro = null)
+            string filtroNombreApellidos = null)
         // La asignación filtro=null indica que el parámetro filtro es opcional
         {
             var administradores = GetAllAdministradores(); // Todos los administradores
             if (administradores != null) // Si se tienen administradores
             {
                 // Si el filtro tiene algun valor
-                if (!String.IsNullOrEmpty(filtro))
+                if (!String.IsNullOrEmpty(filtroNombreApellidos))
                 {
                     administradores = administradores.Where(
-                        p => (p.Nombre + " " + p.Apellidos).Contains(filtro));
+                        p => (p.Nombre + " " + p.Apellidos).Contains(
+                            filtroNombreApellidos));
                     // Filtra los administradores que contienen el filtro
                 }
             }

@@ -7,7 +7,8 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
     {
         ConsultaDomiciliaria AddConsulta(ConsultaDomiciliaria nuevaConsulta);
         IEnumerable<ConsultaDomiciliaria> GetAllConsultas();
-        IEnumerable<ConsultaDomiciliaria> GetConsultasPorFiltro(string filtro);
+        IEnumerable<ConsultaDomiciliaria> GetConsultasPorFiltro(
+            string filtroNombreMascota);
         ConsultaDomiciliaria GetConsulta(int idConsulta);
         ConsultaDomiciliaria UpdateConsulta(
             ConsultaDomiciliaria consultaActualizada);
