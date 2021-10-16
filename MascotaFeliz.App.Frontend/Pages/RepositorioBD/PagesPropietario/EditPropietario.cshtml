@@ -16,6 +16,11 @@
         <span class="text-danger" asp-validation-for="Propietario.Apellidos"></span>
     </div>
     <div class="form-group">
+        <label asp-for="Propietario.Identificacion">Identificación:</label>
+        <input asp-for="Propietario.Identificacion" class="form-control">
+        <span class="text-danger" asp-validation-for="Propietario.Identificacion"></span>
+    </div>
+    <div class="form-group">
         <label asp-for="Propietario.NumeroTelefono">Número de Teléfono:</label>
         <input asp-for="Propietario.NumeroTelefono" class="form-control">
         <span class="text-danger" asp-validation-for="Propietario.NumeroTelefono"></span>
@@ -29,11 +34,6 @@
         <label asp-for="Propietario.Direccion">Direccion:</label>
         <input asp-for="Propietario.Direccion" class="form-control">
         <span class="text-danger" asp-validation-for="Propietario.Direccion"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Propietario.Identificacion">Direccion:</label>
-        <input asp-for="Propietario.Identificacion" class="form-control">
-        <span class="text-danger" asp-validation-for="Propietario.Identificacion"></span>
     </div>
     <button type="submit" class="btn btn-primary">Grabar</button>
 </form>
