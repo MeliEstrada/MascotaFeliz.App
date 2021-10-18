@@ -25,6 +25,11 @@
         <input asp-for="Administrador.CorreoElectronico" class="form-control">
         <span class="text-danger" asp-validation-for="Administrador.CorreoElectronico"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Grabar</button>
+    <button
+        type="submit"
+        class="btn btn-primary">
+        Guardar Cambios &nbsp; &nbsp;
+        <i class="fas fa-save fa-lg"></i>
+    </button>
 </form>
 <a asp-page="./ListAdministradores" class="btn-default">Lista de Administradores</a>

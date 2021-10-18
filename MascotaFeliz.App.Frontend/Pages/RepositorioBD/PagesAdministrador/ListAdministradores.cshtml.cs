@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MascotaFeliz.App.Dominio;
-//using MascotaFeliz.App.Persistencia.AppRepositorios;
-using MascotaFeliz.App.Persistencia;
+using MascotaFeliz.App.Persistencia.AppRepositorios;
+//using MascotaFeliz.App.Persistencia;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-//using Microsoft.AspNetcore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MascotaFeliz.App.Frontend.Pages
 {
@@ -27,9 +27,9 @@ namespace MascotaFeliz.App.Frontend.Pages
         public void OnGet(string filtroBusqueda)
         {
             FiltroBusqueda = filtroBusqueda;
-            //Administradores = repositorioAdministrador.GetAdministradoresPorFiltro(
-            //    filtroBusqueda);
-            Administradores = repositorioAdministrador.GetAllAdministradores();
+            Administradores = repositorioAdministrador.GetAdministradoresPorFiltro(
+                filtroBusqueda);
+            //Administradores = repositorioAdministrador.GetAllAdministradores();
         }
 
     }

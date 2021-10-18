@@ -3,20 +3,25 @@
 @{
 }
 <h2>@Model.Administrador.Nombre @Model.Administrador.Apellidos</h2>
-<div>
-    Nombre: @Model.Administrador.Nombre
-</div>
-<div>
-    Apellido(s): @Model.Administrador.Apellidos
-</div>
-<div>
-    Número de Teléfono: @Model.Administrador.NumeroTelefono
-</div>
-<div>
-    Correo Electrónico: @Model.Administrador.CorreoElectronico
-</div>
 <form method="post">
     <input type="hidden" asp-for="Administrador.Id"/>
-    <button type="submit" class="btn btn-primary">Eliminar</button>
+    <div class="form-group">
+        Nombre: @Model.Administrador.Nombre
+    </div>
+    <div class="form-group">
+        Apellido(s): @Model.Administrador.Apellidos
+    </div>
+    <div class="form-group">
+        Número de Teléfono: @Model.Administrador.NumeroTelefono
+    </div>
+    <div class="form-group">
+        Correo Electrónico: @Model.Administrador.CorreoElectronico
+    </div>
+    <button
+        type="submit"
+        class="btn btn-primary">
+        Eliminar Administrador &nbsp; &nbsp;
+        <i class="fas fa-trash fa-lg"></i>
+    </button>
 </form>
 <a asp-page="./ListAdministradores" class="btn-default">Lista de Administradores</a>

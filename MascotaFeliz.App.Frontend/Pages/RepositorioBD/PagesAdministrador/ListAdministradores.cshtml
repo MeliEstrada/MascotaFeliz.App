@@ -8,7 +8,12 @@
         <p>
             Filtro:
             <input type="text" name="filtroBusqueda" asp-for="FiltroBusqueda"/>
-            <input type="submit" value="Filtrar"/>
+            <button
+                type="submit"
+                class="btn btn-primary">
+                Filtrar &nbsp; &nbsp;
+                <i class="fas fa-filter fa-lg"></i>
+            </button>
         </p>
     </div>
 </form>
@@ -31,8 +36,8 @@
                     class="btn btn-primary table-btn" 
                     asp-page="./DetailsAdministrador"
                     asp-route-administradorId="@administrador.Id">
-                    <i class="fas fa-info-circle fa-lg"></i>
-                    @* Detalles Administrador *@
+                    <i class="fas fa-search-plus fa-lg"></i>
+                    @* Detalles del Administrador *@
                 </a>
             </td>
             <td>
@@ -47,4 +52,9 @@
         </tr>
     }
 </table>
-<a asp-page="./EditAdministrador" class="btn btn-primary">Adicionar Administrador</a>
+<a
+    asp-page="./EditAdministrador"
+    class="btn btn-primary">
+    Crear Nuevo Administrador &nbsp; &nbsp;
+    <i class="fas fa-file-medical fa-lg"></i>
+</a>

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MascotaFeliz.App.Dominio;
-//using MascotaFeliz.App.Persistencia.AppRepositorios;
-using MascotaFeliz.App.Persistencia;
+using MascotaFeliz.App.Persistencia.AppRepositorios;
+//using MascotaFeliz.App.Persistencia;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-//using Microsoft.AspNetcore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MascotaFeliz.App.Frontend.Pages
 {
@@ -19,7 +19,8 @@ namespace MascotaFeliz.App.Frontend.Pages
 
         public DetailsAdministradorModel()
         {
-            repositorioAdministrador = new RepositorioAdministrador(new MascotaFeliz.App.Persistencia.AppContext());
+            repositorioAdministrador = new RepositorioAdministrador(
+                new MascotaFeliz.App.Persistencia.AppContext());
         }
 
         public IActionResult OnGet(int administradorId)
@@ -31,8 +32,8 @@ namespace MascotaFeliz.App.Frontend.Pages
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid) return Page();
-            repositorioAdministrador.DeleteAdministrador(Administrador.Id);
+            if (Administrador.Id > 0)
+                repositorioAdministrador.DeleteAdministrador(Administrador.Id);
             return RedirectToPage("./ListAdministradores");
         }
         
