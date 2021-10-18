@@ -1,0 +1,80 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.ListConsultasModel
+@{
+}
+<h1>Listado de Consultas Domiciliarias</h1>
+<form method="get">
+    <div class="form-group">
+        <label asp-for="FiltroIdMascota">Filtro por Mascota:</label>
+        <select name="FiltroIdMascota" asp-for="FiltroIdMascota" class="form-control">
+            <option value="0">Todas las Mascotas</option>
+            @foreach (var mascota in Model.Mascotas)
+            {
+                <option value="@mascota.Id">@mascota.Nombre ( @mascota.TipoMascota )</option>
+            }
+        </select>
+        <label asp-for="FiltroIdVeterinario">Filtro por Veterinario:</label>
+        <select name="FiltroIdVeterinario" asp-for="FiltroIdVeterinario" class="form-control">
+            <option value="0">Todas los Veterinarios</option>
+            @foreach (var veterinario in Model.Veterinarios)
+            {
+                <option value="@veterinario.Id">@veterinario.Nombre @veterinario.Apellidos</option>
+            }
+        </select>
+        <button
+            type="submit"
+            class="btn btn-primary">
+            Filtrar &nbsp; &nbsp;
+            <i class="fas fa-filter fa-lg"></i>
+        </button>
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <td><b>Nombre</b></td>
+        <td><b>Tipo de Mascota</b></td>
+        <td><b>Veterinario</b></td>
+        <td><b>Fecha-Hora</b></td>
+        <td><b>Estado</b></td>
+        <td><b>Temperatura</b></td>
+        <td><b>Peso</b></td>
+        <td><b>Detalles</b></td>
+        <td><b>Actualizar</b></td>
+    <tr>
+    @foreach (var consulta in Model.Consultas)
+    {
+        <tr>
+            <td>@Model.GetNombreMascota(consulta.MascotaId) </td>
+            <td>@Model.GetTipoMascota(consulta.MascotaId) </td>
+            <td>@Model.GetNombreApellidosVeterinario(consulta.VeterinarioId)</td>
+            <td>@consulta.Hora</td>
+            <td>@consulta.Status</td>
+            <td>@consulta.Temperatura</td>
+            <td>@consulta.Peso</td>
+            <td>
+                <a 
+                    class="btn btn-primary table-btn"
+                    asp-page="./DetailsConsulta"
+                    asp-route-consultaId="@consulta.Id">
+                    <i class="fas fa-search-plus fa-lg"></i>
+                    @* Detalles de la Consulta Domiciliaria *@
+                </a>
+            </td>
+            <td>
+                <a
+                    class="btn btn-primary table-btn"
+                    asp-page="./EditConsulta"
+                    asp-route-consultaId="@consulta.Id">
+                    <i class="fas fa-address-book fa-lg" aria-hidden="true"></i>
+                    @* Actualizar Consulta Domiciliaria *@
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+<a
+    asp-page="./EditConsulta"
+    class="btn btn-primary">
+    Crear Nueva Consulta Domiciliaria &nbsp; &nbsp;
+    <i class="fas fa-file-medical fa-lg"></i>
+</a>

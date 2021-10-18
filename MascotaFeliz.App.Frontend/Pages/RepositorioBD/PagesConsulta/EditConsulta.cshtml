@@ -1,0 +1,81 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.EditConsultaModel
+@{
+}
+@if (Model.Consulta.Id > 0)
+{
+    <h2>Datos de la Consulta Domiciliaria: @Model.Veterinario.Nombre @Model.Veterinario.Apellidos - @Model.Mascota.Nombre ( @Model.Mascota.TipoMascota ))</h2>
+}
+<form method="post">
+    <input type="hidden" asp-for="Consulta.Id"/>
+    <div class="form-group">
+        <label asp-for="Consulta.MascotaId">Mascota:</label>
+        <select name="Consulta.MascotaId" asp-for="Consulta.MascotaId" class="form-control">
+            @foreach (var mascota in Model.Mascotas)
+            {
+                <option value="@mascota.Id">@mascota.Nombre ( @mascota.TipoMascota )</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Consulta.VeterinarioId">Veterinario:</label>
+        <select name="Consulta.VeterinarioId" asp-for="Consulta.VeterinarioId" class="form-control">
+            @foreach (var veterinario in Model.Veterinarios)
+            {
+                <option value="@veterinario.Id">@veterinario.Nombre @veterinario.Apellidos</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Consulta.Hora">Hora:</label>
+        <input asp-for="Consulta.Hora" class="form-control">
+        <span class="text-danger" asp-validation-for="Consulta.Hora"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Consulta.Status">Estado:</label><br>
+        <input type="radio" id="solicitada" asp-for="Consulta.Status" value="Solicitada">
+        <label for="solicitada">Solicitada</label><br>
+        <input type="radio" id="agendada" asp-for="Consulta.Status" value="Agendada">
+        <label for="agendada">Agendada</label><br>
+        <input type="radio" id="efectuada" asp-for="Consulta.Status" value="Efectuada">
+        <label for="efectuada">Efectuada</label><br>
+        <span class="text-danger" asp-validation-for="Consulta.Status"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Consulta.Temperatura">Temperatura:</label>
+        <input asp-for="Consulta.Temperatura" class="form-control">
+        <span class="text-danger" asp-validation-for="Consulta.Temperatura"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Consulta.Peso">Peso:</label>
+        <input asp-for="Consulta.Peso" class="form-control">
+        <span class="text-danger" asp-validation-for="Consulta.Peso"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Consulta.FrecuenciaRespiratoria">Frecuencia Respiratoria:</label>
+        <input asp-for="Consulta.FrecuenciaRespiratoria" class="form-control">
+        <span class="text-danger" asp-validation-for="Consulta.FrecuenciaRespiratoria"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Consulta.FrecuenciaCardiaca">Frecuencia Cardiaca:</label>
+        <input asp-for="Consulta.FrecuenciaCardiaca" class="form-control">
+        <span class="text-danger" asp-validation-for="Consulta.FrecuenciaCardiaca"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Consulta.EstadoAnimo">Estado de Ánimo:</label>
+        <input asp-for="Consulta.EstadoAnimo" class="form-control">
+        <span class="text-danger" asp-validation-for="Consulta.EstadoAnimo"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Consulta.Diagnostico">Diagnóstico:</label>
+        <input asp-for="Consulta.Diagnostico" class="form-control">
+        <span class="text-danger" asp-validation-for="Consulta.Diagnostico"></span>
+    </div>
+    <button
+        type="submit"
+        class="btn btn-primary">
+        Guardar Cambios &nbsp; &nbsp;
+        <i class="fas fa-save fa-lg"></i>
+    </button>
+</form>
+<a asp-page="./ListConsultas" class="btn-default">Lista de Consultas</a>
