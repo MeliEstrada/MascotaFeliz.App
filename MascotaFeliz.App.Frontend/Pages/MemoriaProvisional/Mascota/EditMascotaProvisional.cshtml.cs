@@ -14,7 +14,7 @@ namespace MascotaFeliz.App.Frontend.Pages
         private readonly IMemoriaMascota memoriaMascota;
         private readonly IMemoriaPropietario memoriaPropietario; // Adición
         [BindProperty]
-        public Mascota Mascota {get;set;}
+        public MascotaOriginal Mascota {get;set;}
         [BindProperty(SupportsGet = true)] // Adición
         public int propietarioId {get;set;} // Adición
         [BindProperty(SupportsGet = true)] // Adición
@@ -31,7 +31,7 @@ namespace MascotaFeliz.App.Frontend.Pages
         public IActionResult OnGet(int? mascotaId)
         {
             Propietarios = memoriaPropietario.GetAllPropietarios(); // Adición
-            if (!mascotaId.HasValue) Mascota = new Mascota();
+            if (!mascotaId.HasValue) Mascota = new MascotaOriginal();
             else
             {
                 Mascota = memoriaMascota.GetMascota(mascotaId.Value);

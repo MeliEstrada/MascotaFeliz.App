@@ -13,7 +13,7 @@ namespace MascotaFeliz.App.Frontend.Pages
     {
         private readonly IMemoriaMascota memoriaMascota;
         [BindProperty]
-        public Mascota Mascota {get;set;}
+        public MascotaOriginal Mascota {get;set;}
 
         public DetailsMascotaProvisionalModel(
             IMemoriaMascota memoriaMascota)

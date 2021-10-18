@@ -12,7 +12,7 @@ namespace MascotaFeliz.App.Frontend.Pages
     public class ListMascotasProvisionalModel : PageModel
     {
         private readonly IMemoriaMascota memoriaMascota;
-        public IEnumerable<Mascota> Mascotas {get;set;}
+        public IEnumerable<MascotaOriginal> Mascotas {get;set;}
         [BindProperty(SupportsGet = true)]
         public string FiltroBusqueda {get;set;}
 

@@ -15,13 +15,13 @@ public class EditConsultaProvisionalModel : PageModel
         private readonly IMemoriaMascota memoriaMascota; // Adición
         private readonly IMemoriaVeterinario memoriaVeterinario; // Adición
         [BindProperty]
-        public ConsultaDomiciliaria ConsultaDomiciliaria {get;set;}
+        public ConsultaDomiciliariaOriginal ConsultaDomiciliaria {get;set;}
         [BindProperty(SupportsGet = true)] // Adición
         public int mascotaId {get;set;} // Adición
         [BindProperty(SupportsGet = true)] // Adición
         public int veterinarioId {get;set;} // Adición
         [BindProperty(SupportsGet = true)] // Adición
-        public IEnumerable<Mascota> Mascotas {get;set;} // Adición
+        public IEnumerable<MascotaOriginal> Mascotas {get;set;} // Adición
         [BindProperty(SupportsGet = true)] // Adición
         public IEnumerable<Veterinario> Veterinarios {get;set;} // Adición
 
@@ -40,7 +40,7 @@ public class EditConsultaProvisionalModel : PageModel
             Mascotas = memoriaMascota.GetAllMascotas(); // Adición
             Veterinarios = memoriaVeterinario.GetAllVeterinarios(); // Adición
             if (!consultaId.HasValue)
-                ConsultaDomiciliaria = new ConsultaDomiciliaria();
+                ConsultaDomiciliaria = new ConsultaDomiciliariaOriginal();
             else
             {
                 ConsultaDomiciliaria =
