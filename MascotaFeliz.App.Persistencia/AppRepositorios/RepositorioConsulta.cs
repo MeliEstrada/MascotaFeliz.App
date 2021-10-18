@@ -27,30 +27,36 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
             return consultaAdicionada.Entity;
         }
 
-        public ConsultaDomiciliaria AsignarMascota(
+        //public ConsultaDomiciliaria AsignarMascota(
+        public Mascota AsignarMascota(
             ConsultaDomiciliaria consultaAModificar, int idMascota)
         {
             var mascotaEncontrada =
                 _appContext.Mascotas.FirstOrDefault(m => m.Id == idMascota);
             if (mascotaEncontrada != null)
             {
-                consultaAModificar.Mascota = mascotaEncontrada;
+                //consultaAModificar.Mascota = mascotaEncontrada;
+                consultaAModificar.MascotaId = idMascota;
                 // _appContext.SaveChanges();
             }
-            return consultaAModificar;
+            //return consultaAModificar;
+            return mascotaEncontrada;
         }
 
-        public ConsultaDomiciliaria AsignarVeterinario(
+        //public ConsultaDomiciliaria AsignarVeterinario(
+        public Veterinario AsignarVeterinario(
             ConsultaDomiciliaria consultaAModificar, int idVeterinario)
         {
             var veterinarioEncontrado =
                 _appContext.Veterinarios.FirstOrDefault(v => v.Id == idVeterinario);
             if (veterinarioEncontrado != null)
             {
-                consultaAModificar.Veterinario = veterinarioEncontrado;
+                //consultaAModificar.Veterinario = veterinarioEncontrado;
+                consultaAModificar.VeterinarioId = idVeterinario;
                 // _appContext.SaveChanges();
             }
-            return consultaAModificar;
+            //return consultaAModificar;
+            return veterinarioEncontrado;
         }
 
         public void DeleteConsulta(int idConsulta)
@@ -72,21 +78,29 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
                 cd => cd.Id == idConsulta);
         }
 
-        public IEnumerable<ConsultaDomiciliaria> GetConsultasPorFiltro(
-            string FiltroNombreMascota = null)
-        // La asignación Filtro=null indica que el parámetro Filtro es opcional
+        public IEnumerable<ConsultaDomiciliaria> GetConsultasPorMascota(
+            IEnumerable<ConsultaDomiciliaria> previousList, int mascotaId)
         {
-            var consultas = GetAllConsultas(); // Todas las consultas
-            if (consultas != null) // Si se tienen consultas
-            {
-                // Si el Filtro tiene algun valor
-                if (!String.IsNullOrEmpty(FiltroNombreMascota))
-                {
-                    consultas = consultas.Where(
-                        c => (c.Mascota.Nombre).Contains(FiltroNombreMascota));
-                    // Filtra las consultas que contienen el Filtro
-                }
-            }
+            var consultas = previousList; // Todas las consultas que se reciben
+            // Si se tienen consultas
+            if (consultas != null)
+                // Si el filtro tiene algun valor
+                if (mascotaId > 0) consultas = consultas.Where(
+                    c => (c.MascotaId == mascotaId));
+                    // Filtra las consultas que corresponden a la mascota
+            return consultas;
+        }
+
+        public IEnumerable<ConsultaDomiciliaria> GetConsultasPorVeterinario(
+            IEnumerable<ConsultaDomiciliaria> previousList, int veterinarioId)
+        {
+            var consultas = previousList; // Todas las consultas que se reciben
+            // Si se tienen consultas
+            if (consultas != null)
+                // Si el filtro tiene algun valor
+                if (veterinarioId > 0) consultas = consultas.Where(
+                    c => (c.VeterinarioId == veterinarioId));
+                    // Filtra las consultas que corresponden al veterinario
             return consultas;
         }
 
@@ -110,10 +124,16 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
                     consultaActualizada.EstadoAnimo;
                 consultaEncontrada.Diagnostico =
                     consultaActualizada.Diagnostico;
+                /*
                 consultaEncontrada.Mascota =
                     consultaActualizada.Mascota;
                 consultaEncontrada.Veterinario =
                     consultaActualizada.Veterinario;
+                */
+                consultaEncontrada.MascotaId =
+                    consultaActualizada.MascotaId;
+                consultaEncontrada.VeterinarioId =
+                    consultaActualizada.VeterinarioId;
                 _appContext.SaveChanges();
             }
             return consultaEncontrada;

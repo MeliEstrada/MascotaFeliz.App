@@ -9,9 +9,9 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
     {
         private readonly IMemoriaMascota memoriaMascota;
         private readonly IMemoriaVeterinario memoriaVeterinario;
-        List<Mascota> mascotas;
+        List<MascotaOriginal> mascotas;
         List<Veterinario> veterinarios;
-        List<ConsultaDomiciliaria> consultas;
+        List<ConsultaDomiciliariaOriginal> consultas;
 
         public MemoriaConsulta(IMemoriaMascota memoriaMascota,
             IMemoriaVeterinario memoriaVeterinario)
@@ -19,36 +19,37 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
             this.memoriaMascota = memoriaMascota;
             this.memoriaVeterinario = memoriaVeterinario;
 
-            mascotas = (List<Mascota>)memoriaMascota.GetAllMascotas();
+            mascotas = (List<MascotaOriginal>)memoriaMascota.GetAllMascotas();
             veterinarios =
                 (List<Veterinario>)memoriaVeterinario.GetAllVeterinarios();
 
-            consultas = new List<ConsultaDomiciliaria>
+            consultas = new List<ConsultaDomiciliariaOriginal>
             {
-                new ConsultaDomiciliaria{Id=1, Mascota=mascotas[0],
+                new ConsultaDomiciliariaOriginal{Id=1, Mascota=mascotas[0],
                     Veterinario=veterinarios[0], Status=StatusConsulta.Efectuada,
                     Fecha=System.DateTime.Today, Hora=System.DateTime.Now,
                     Temperatura=37.5F, Peso=3.4F},
-                new ConsultaDomiciliaria{Id=2, Mascota=mascotas[1],
+                new ConsultaDomiciliariaOriginal{Id=2, Mascota=mascotas[1],
                     Veterinario=veterinarios[1], Status=StatusConsulta.Agendada,
                     Fecha=System.DateTime.Today, Hora=System.DateTime.Now,
                     Temperatura=37.5F , Peso=3.4F},
-                new ConsultaDomiciliaria{Id=3, Mascota=mascotas[2],
+                new ConsultaDomiciliariaOriginal{Id=3, Mascota=mascotas[2],
                     Veterinario=veterinarios[0], Status=StatusConsulta.Solicitada,
                     Fecha=System.DateTime.Today, Hora=System.DateTime.Now,
                     Temperatura=37.5F , Peso=3.4F},
             };
         }
 
-        public ConsultaDomiciliaria AddConsulta(ConsultaDomiciliaria nuevaConsulta)
+        public ConsultaDomiciliariaOriginal AddConsulta(
+            ConsultaDomiciliariaOriginal nuevaConsulta)
         {
             nuevaConsulta.Id = consultas.Max(c => c.Id) + 1;
             consultas.Add(nuevaConsulta);
             return nuevaConsulta;
         }
 
-        public ConsultaDomiciliaria AsignarMascota(
-            ConsultaDomiciliaria consultaAModificar, int idMascota)
+        public ConsultaDomiciliariaOriginal AsignarMascota(
+            ConsultaDomiciliariaOriginal consultaAModificar, int idMascota)
         {
             var mascotaEncontrada =
                 mascotas.FirstOrDefault(m => m.Id == idMascota);
@@ -57,8 +58,8 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
             return consultaAModificar;
         }
 
-        public ConsultaDomiciliaria AsignarVeterinario(
-            ConsultaDomiciliaria consultaAModificar, int idVeterinario)
+        public ConsultaDomiciliariaOriginal AsignarVeterinario(
+            ConsultaDomiciliariaOriginal consultaAModificar, int idVeterinario)
         {
             var veterinarioEncontrado =
                 veterinarios.FirstOrDefault(m => m.Id == idVeterinario);
@@ -74,17 +75,17 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
                 consultas.Remove(consultaEncontrada);
         }
 
-        public IEnumerable<ConsultaDomiciliaria> GetAllConsultas()
+        public IEnumerable<ConsultaDomiciliariaOriginal> GetAllConsultas()
         {
             return consultas;
         }
 
-        public ConsultaDomiciliaria GetConsulta(int consultaId)
+        public ConsultaDomiciliariaOriginal GetConsulta(int consultaId)
         {
             return consultas.SingleOrDefault(c => c.Id == consultaId);
         }
 
-        public IEnumerable<ConsultaDomiciliaria> GetConsultasPorFiltro(
+        public IEnumerable<ConsultaDomiciliariaOriginal> GetConsultasPorFiltro(
             string filtro = null)
         // La asignación filtro=null indica que el parámetro filtro es opcional
         {
@@ -102,8 +103,8 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
             return consultas;
         }
 
-        public ConsultaDomiciliaria UpdateConsulta(
-            ConsultaDomiciliaria consultaActualizada)
+        public ConsultaDomiciliariaOriginal UpdateConsulta(
+            ConsultaDomiciliariaOriginal consultaActualizada)
         {
             var consulta = GetConsulta(consultaActualizada.Id);
             if (consulta != null)

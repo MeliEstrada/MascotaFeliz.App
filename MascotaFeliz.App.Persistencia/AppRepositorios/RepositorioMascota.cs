@@ -25,19 +25,22 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
             return mascotaAdicionada.Entity;
         }
 
-        public Mascota AsignarPropietario(
+        //public Mascota AsignarPropietario(
+        public Propietario AsignarPropietario(
             Mascota mascotaAModificar, int idPropietario)
         {
             var propietarioEncontrado = 
                 _appContext.Propietarios.FirstOrDefault(p => p.Id == idPropietario);
             if (propietarioEncontrado != null)
             {
-                mascotaAModificar.Propietario = propietarioEncontrado;
+                //mascotaAModificar.Propietario = propietarioEncontrado;
+                mascotaAModificar.PropietarioId = idPropietario;
                 // _appContext.SaveChanges();
             }
-            return mascotaAModificar;
+            //return mascotaAModificar;
+            return propietarioEncontrado;
         }
-        
+
         public void DeleteMascota(int idMascota)
         {
             var mascotaEncontrada = GetMascota(idMascota);
@@ -56,18 +59,17 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
             return _appContext.Mascotas.FirstOrDefault(m => m.Id == idMascota);
         }
 
-        public IEnumerable<Mascota> GetMascotasPorFiltro(
-            string filtroNombreMascota = null)
+        public IEnumerable<Mascota> GetMascotasPorFiltro(string filtro = null)
         // La asignación filtro=null indica que el parámetro filtro es opcional
         {
             var mascotas = GetAllMascotas(); // Todas las mascotas
             if (mascotas != null) // Si se tienen mascotas
             {
                 // Si el filtro tiene algun valor
-                if (!String.IsNullOrEmpty(filtroNombreMascota))
+                if (!String.IsNullOrEmpty(filtro))
                 {
                     mascotas = mascotas.Where(
-                        m => (m.Nombre).Contains(filtroNombreMascota));
+                        m => (m.Nombre).Contains(filtro));
                     // Filtra las mascotas que contienen el filtro
                 }
             }
@@ -85,7 +87,8 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
                 mascotaEncontrada.Genero = mascotaActualizada.Genero;
                 mascotaEncontrada.AnioNacimiento =
                     mascotaActualizada.AnioNacimiento;
-                mascotaEncontrada.Propietario = mascotaActualizada.Propietario;
+                //mascotaEncontrada.Propietario = mascotaActualizada.Propietario;
+                mascotaEncontrada.PropietarioId = mascotaActualizada.PropietarioId;
                 _appContext.SaveChanges();
             }
             return mascotaEncontrada;
