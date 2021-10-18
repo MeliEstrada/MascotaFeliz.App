@@ -1,0 +1,30 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.DetailsMascotaModel
+@{
+}
+<h2>@Model.Mascota.Nombre (@Model.Mascota.TipoMascota)</h2>
+<form method="post">
+    <input type="hidden" asp-for="Mascota.Id"/>
+    <div class="form-group">
+        Nombre: @Model.Mascota.Nombre
+    </div>
+    <div class="form-group">
+        Tipo: @Model.Mascota.TipoMascota
+    </div>
+    <div class="form-group">
+        Raza: @Model.Mascota.Raza
+    </div>
+    <div class="form-group">
+        Genero: @Model.Mascota.Genero
+    </div>
+    <div class="form-group">
+        Propietario: @Model.Propietario.Nombre @Model.Propietario.Apellidos
+    </div>
+    <button
+        type="submit"
+        class="btn btn-primary">
+        Eliminar Mascota &nbsp; &nbsp;
+        <i class="fas fa-trash fa-lg"></i>
+    </button>
+</form>
+<a asp-page="./ListMascotas" class="btn-default">Lista de Mascotas</a>

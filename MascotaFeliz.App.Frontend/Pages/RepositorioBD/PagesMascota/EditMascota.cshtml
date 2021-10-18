@@ -1,0 +1,55 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.EditMascotaModel
+@{
+}
+<h2>Datos de la Mascota: @Model.Mascota.Nombre (@Model.Mascota.TipoMascota)</h2>
+<form method="post">
+    <input type="hidden" asp-for="Mascota.Id"/>
+    <div class="form-group">
+        <label asp-for="Mascota.PropietarioId">Propietario:</label>
+        <select name="Mascota.PropietarioId" asp-for="Mascota.PropietarioId" class="form-control">
+            @foreach (var propietario in Model.Propietarios)
+            {
+                <option value="@propietario.Id">@propietario.Nombre @propietario.Apellidos</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Mascota.Nombre">Nombre:</label>
+        <input asp-for="Mascota.Nombre" class="form-control">
+        <span class="text-danger" asp-validation-for="Mascota.Nombre"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Mascota.TipoMascota">Tipo de Mascota:</label><br>
+        <input type="radio" id="perro" asp-for="Mascota.TipoMascota" value="Perro">
+        <label for="perro">Perro</label><br>
+        <input type="radio" id="gato" asp-for="Mascota.TipoMascota" value="Gato">
+        <label for="gato">Gato</label><br>
+        <span class="text-danger" asp-validation-for="Mascota.TipoMascota"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Mascota.Raza">Raza:</label>
+        <input asp-for="Mascota.Raza" class="form-control">
+        <span class="text-danger" asp-validation-for="Mascota.Raza"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Mascota.Genero">Género:</label><br>
+        <input type="radio" id="macho" asp-for="Mascota.Genero" value="Macho">
+        <label for="macho">Macho</label><br>
+        <input type="radio" id="hembra" asp-for="Mascota.Genero" value="Hembra">
+        <label for="hembra">Hembra</label><br>
+        <span class="text-danger" asp-validation-for="Mascota.Genero"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Mascota.AnioNacimiento">Año de Nacimiento:</label>
+        <input asp-for="Mascota.AnioNacimiento" class="form-control">
+        <span class="text-danger" asp-validation-for="Mascota.AnioNacimiento"></span>
+    </div>
+    <button
+        type="submit"
+        class="btn btn-primary">
+        Guardar Cambios &nbsp; &nbsp;
+        <i class="fas fa-save fa-lg"></i>
+    </button>
+</form>
+<a asp-page="./ListMascotas" class="btn-default">Lista de Mascotas</a>

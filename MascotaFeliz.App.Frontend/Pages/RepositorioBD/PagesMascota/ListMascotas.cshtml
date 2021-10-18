@@ -1,0 +1,64 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.ListMascotasModel
+@{
+}
+<h1>Listado de Mascotas</h1>
+<form method="get">
+    <div class="form-group">
+        <p>
+            Filtro:
+            <input type="text" name="filtroBusqueda" asp-for="FiltroBusqueda"/>
+            <button
+                type="submit"
+                class="btn btn-primary">
+                Filtrar &nbsp; &nbsp;
+                <i class="fas fa-filter fa-lg"></i>
+            </button>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <td><b>Nombre</b></td>
+        <td><b>Tipo De Mascota</b></td>
+        <td><b>Raza</b></td>
+        <td><b>Genero</b></td>
+        <td><b>Propietario</b></td>
+        <td><b>Detalles</b></td>
+        <td><b>Actualizar</b></td>
+    <tr>
+    @foreach (var mascota in Model.Mascotas)
+    {
+        <tr>
+            <td>@mascota.Nombre</td>
+            <td>@mascota.TipoMascota</td>
+            <td>@mascota.Raza</td>
+            <td>@mascota.Genero</td>
+            <td>@Model.GetNombreApellidosPropietario(mascota.PropietarioId)</td>
+            <td>
+                <a 
+                    class="btn btn-primary table-btn"
+                    asp-page="./DetailsMascota"
+                    asp-route-mascotaId="@mascota.Id">
+                    <i class="fas fa-search-plus fa-lg"></i>
+                    @* Detalles Mascota *@
+                </a>
+            </td>
+            <td>
+                <a
+                    class="btn btn-primary table-btn"
+                    asp-page="./EditMascota"
+                    asp-route-mascotaId="@mascota.Id">
+                    <i class="fas fa-address-book fa-lg" aria-hidden="true"></i>
+                    @* Actualizar Mascota *@
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+<a
+    asp-page="./EditMascota"
+    class="btn btn-primary">
+    Crear Nueva Mascota &nbsp; &nbsp;
+    <i class="fas fa-file-medical fa-lg"></i>
+</a>
