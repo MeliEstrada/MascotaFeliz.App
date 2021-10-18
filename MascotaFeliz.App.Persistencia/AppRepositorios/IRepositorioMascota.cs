@@ -7,10 +7,11 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
     {
         Mascota AddMascota(Mascota nuevaMascota);
         IEnumerable<Mascota> GetAllMascotas();
-        IEnumerable<Mascota> GetMascotasPorFiltro(string filtroNombreMascota);
+        IEnumerable<Mascota> GetMascotasPorFiltro(string filtro);
         Mascota GetMascota(int idMascota);
         Mascota UpdateMascota(Mascota mascotaActualizada);
         void DeleteMascota(int idMascota);
-        Mascota AsignarPropietario(Mascota mascotaAModificar, int idPropietario);
+        //Mascota AsignarPropietario(Mascota mascotaAModificar, int idPropietario);
+        Propietario AsignarPropietario(Mascota mascotaAModificar, int idPropietario);
     }
 }

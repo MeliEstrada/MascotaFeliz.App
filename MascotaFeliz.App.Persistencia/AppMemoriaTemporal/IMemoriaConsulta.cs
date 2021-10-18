@@ -5,16 +5,18 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
 {
     public interface IMemoriaConsulta
     {
-        IEnumerable<ConsultaDomiciliaria> GetAllConsultas();
-        IEnumerable<ConsultaDomiciliaria> GetConsultasPorFiltro(string filtro);
-        ConsultaDomiciliaria GetConsulta(int consultaId);
-        ConsultaDomiciliaria UpdateConsulta(
-            ConsultaDomiciliaria consultaActualizada);
-        ConsultaDomiciliaria AddConsulta(ConsultaDomiciliaria nuevaConsulta);
+        IEnumerable<ConsultaDomiciliariaOriginal> GetAllConsultas();
+        IEnumerable<ConsultaDomiciliariaOriginal> GetConsultasPorFiltro(
+            string filtro);
+        ConsultaDomiciliariaOriginal GetConsulta(int consultaId);
+        ConsultaDomiciliariaOriginal UpdateConsulta(
+            ConsultaDomiciliariaOriginal consultaActualizada);
+        ConsultaDomiciliariaOriginal AddConsulta(
+            ConsultaDomiciliariaOriginal nuevaConsulta);
         void DeleteConsulta(int consultaId);
-        ConsultaDomiciliaria AsignarMascota(
-            ConsultaDomiciliaria consultaAModificar, int idMascota);
-        ConsultaDomiciliaria AsignarVeterinario(
-            ConsultaDomiciliaria consultaAModificar, int idVeterinario);
+        ConsultaDomiciliariaOriginal AsignarMascota(
+            ConsultaDomiciliariaOriginal consultaAModificar, int idMascota);
+        ConsultaDomiciliariaOriginal AsignarVeterinario(
+            ConsultaDomiciliariaOriginal consultaAModificar, int idVeterinario);
     }
 }

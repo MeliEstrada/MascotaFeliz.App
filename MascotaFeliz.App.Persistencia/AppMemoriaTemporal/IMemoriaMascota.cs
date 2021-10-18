@@ -5,14 +5,14 @@ namespace MascotaFeliz.App.Persistencia.AppMemoriaTemporal
 {
     public interface IMemoriaMascota
     {
-        IEnumerable<Mascota> GetAllMascotas();
-        IEnumerable<Mascota> GetMascotasPorFiltro(string filtro);
-        Mascota GetMascota(int mascotaId);
-        Mascota UpdateMascota(Mascota mascotaActualizada);
-        Mascota AddMascota(Mascota nuevaMascota);
+        IEnumerable<MascotaOriginal> GetAllMascotas();
+        IEnumerable<MascotaOriginal> GetMascotasPorFiltro(string filtro);
+        MascotaOriginal GetMascota(int mascotaId);
+        MascotaOriginal UpdateMascota(MascotaOriginal mascotaActualizada);
+        MascotaOriginal AddMascota(MascotaOriginal nuevaMascota);
         void DeleteMascota(int mascotaId);
-        Mascota AsignarPropietario(
-            Mascota mascotaAModificar, int idPropietario);
+        MascotaOriginal AsignarPropietario(
+            MascotaOriginal mascotaAModificar, int idPropietario);
     }
  }
  

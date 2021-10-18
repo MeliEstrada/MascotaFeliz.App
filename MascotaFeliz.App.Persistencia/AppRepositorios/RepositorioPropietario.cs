@@ -46,17 +46,17 @@ namespace MascotaFeliz.App.Persistencia.AppRepositorios
         }
 
         public IEnumerable<Propietario> GetPropietariosPorFiltro(
-            string filtroNombreApellidos = null)
+            string filtro = null)
         // La asignación filtro=null indica que el parámetro filtro es opcional
         {
             var propietarios = GetAllPropietarios(); // Todos los propietarios
             if (propietarios != null) // Si se tienen propietarios
             {
                 // Si el filtro tiene algun valor
-                if (!String.IsNullOrEmpty(filtroNombreApellidos))
+                if (!String.IsNullOrEmpty(filtro))
                 {
                     propietarios = propietarios.Where(
-                        p => (p.Nombre + " " + p.Apellidos).Contains(filtroNombreApellidos));
+                        p => (p.Nombre + " " + p.Apellidos).Contains(filtro));
                     // Filtra los propietarios que contienen el filtro
                 }
             }
