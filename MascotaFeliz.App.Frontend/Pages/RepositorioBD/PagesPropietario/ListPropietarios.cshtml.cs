@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using MascotaFeliz.App.Dominio;
 using MascotaFeliz.App.Persistencia.AppRepositorios;
+//using MascotaFeliz.App.Persistencia;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MascotaFeliz.App.Frontend.Pages
 {
@@ -18,15 +20,16 @@ namespace MascotaFeliz.App.Frontend.Pages
 
         public ListPropietariosModel()
         {
-            repositorioPropietario = new RepositorioPropietario(new MascotaFeliz.App.Persistencia.AppContext());
+            repositorioPropietario = new RepositorioPropietario(
+                new MascotaFeliz.App.Persistencia.AppContext());
         }
 
         public void OnGet(string filtroBusqueda)
         {
             FiltroBusqueda = filtroBusqueda;
-            //Propietarios = repositorioPropietario.GetPropietariosPorFiltro(
-            //    filtroBusqueda);
-            Propietarios = repositorioPropietario.GetAllPropietarios();
+            Propietarios = repositorioPropietario.GetPropietariosPorFiltro(
+                filtroBusqueda);
+            //Propietarios = repositorioPropietario.GetAllPropietarios();
         }
 
     }

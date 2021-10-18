@@ -3,26 +3,31 @@
 @{
 }
 <h2>@Model.Propietario.Nombre @Model.Propietario.Apellidos</h2>
-<div>
-    Nombre: @Model.Propietario.Nombre
-</div>
-<div>
-    Apellido(s): @Model.Propietario.Apellidos
-</div>
-<div>
-    Identificación: @Model.Propietario.Identificacion
-</div>
-<div>
-    Número de Teléfono: @Model.Propietario.NumeroTelefono
-</div>
-<div>
-    Correo Electrónico: @Model.Propietario.CorreoElectronico
-</div>
-<div>
-    Dirección: @Model.Propietario.Direccion
-</div>
 <form method="post">
     <input type="hidden" asp-for="Propietario.Id"/>
-    <button type="submit" class="btn btn-primary">Eliminar</button>
+    <div class="form-group">
+        Nombre: @Model.Propietario.Nombre
+    </div >
+    <div class="form-group">
+        Apellido(s): @Model.Propietario.Apellidos
+    </div>
+    <div class="form-group">
+        Identificación: @Model.Propietario.Identificacion
+    </div>
+    <div class="form-group">
+        Número de Teléfono: @Model.Propietario.NumeroTelefono
+    </div>
+    <div class="form-group">
+        Correo Electrónico: @Model.Propietario.CorreoElectronico
+    </div>
+    <div class="form-group">
+        Dirección: @Model.Propietario.Direccion
+    </div>
+    <button
+        type="submit"
+        class="btn btn-primary">
+        Eliminar Propietario &nbsp; &nbsp;
+        <i class="fas fa-trash fa-lg"></i>
+    </button>
 </form>
 <a asp-page="./ListPropietarios" class="btn-default">Lista de Propietarios</a>

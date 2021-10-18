@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using MascotaFeliz.App.Dominio;
 using MascotaFeliz.App.Persistencia.AppRepositorios;
+//using MascotaFeliz.App.Persistencia;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+//using Microsoft.AspNetCore.Authorization;
 
 namespace MascotaFeliz.App.Frontend.Pages
 {
@@ -17,20 +19,21 @@ namespace MascotaFeliz.App.Frontend.Pages
 
         public DetailsPropietarioModel()
         {
-            repositorioPropietario = new RepositorioPropietario(new MascotaFeliz.App.Persistencia.AppContext());
+            repositorioPropietario = new RepositorioPropietario(
+                new MascotaFeliz.App.Persistencia.AppContext());
         }
 
-        public IActionResult OnGet(int propietarioId)
+        public IActionResult OnGet(int? propietarioId)
         {
-            Propietario = repositorioPropietario.GetPropietario(propietarioId);
+            Propietario = repositorioPropietario.GetPropietario(propietarioId.Value);
             if (Propietario == null) return RedirectToPage("./NotFound");
             else return Page();
         }
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid) return Page();
-            repositorioPropietario.DeletePropietario(Propietario.Id);
+            if (Propietario.Id > 0)
+                repositorioPropietario.DeletePropietario(Propietario.Id);
             return RedirectToPage("./ListPropietarios");
         }
         

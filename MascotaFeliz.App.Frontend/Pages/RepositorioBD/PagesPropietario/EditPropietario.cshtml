@@ -35,6 +35,11 @@
         <input asp-for="Propietario.Direccion" class="form-control">
         <span class="text-danger" asp-validation-for="Propietario.Direccion"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Grabar</button>
+    <button
+        type="submit"
+        class="btn btn-primary">
+        Guardar Cambios &nbsp; &nbsp;
+        <i class="fas fa-save fa-lg"></i>
+    </button>
 </form>
 <a asp-page="./ListPropietarios" class="btn-default">Lista de Propietarios</a>
