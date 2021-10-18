@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MascotaFeliz.App.Dominio
 {
-    public class Mascota
+    public class MascotaOriginal
     {
         public int Id {get;set;}
         [Required, StringLength(20)]
@@ -17,7 +17,6 @@ namespace MascotaFeliz.App.Dominio
         [Required]
         public int AnioNacimiento {get; set;}
         [Required]
-        //public Propietario Propietario {get;set;}
-        public int PropietarioId {get;set;}
+        public Propietario Propietario {get;set;}
     }
 }

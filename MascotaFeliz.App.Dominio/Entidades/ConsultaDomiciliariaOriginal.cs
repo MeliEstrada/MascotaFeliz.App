@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MascotaFeliz.App.Dominio
 {
-    public class ConsultaDomiciliaria
+    public class ConsultaDomiciliariaOriginal
     {
         public int Id {get;set;}
         [Required]
@@ -18,10 +18,8 @@ namespace MascotaFeliz.App.Dominio
         public string EstadoAnimo {get;set;}
         public string Diagnostico {get;set;}
         [Required]
-        //public Mascota Mascota {get;set;}
-        public int MascotaId {get;set;}
+        public MascotaOriginal Mascota {get;set;}
         [Required]
-        //public Veterinario Veterinario {get;set;}
-        public int VeterinarioId {get;set;}
+        public Veterinario Veterinario {get;set;}
     }
 }
